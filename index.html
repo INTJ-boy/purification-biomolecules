@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  PROCEDES DE PURIFICATION DE BIOMOLECULES : INTERACTIVE EXPOSE SITE
+  FILES:  index.html (structure)  |  css/theme.css (colors, fonts)  |  css/style.css (layout)
+          js/content.js (ALL TEXTS fr/en + references)  |  js/config.js (team, colors)  |  js/scenes.js (animated drawings)
+          js/labs.js (laboratory)  |  js/edit.js (methods edit + sound)  |  js/ui.js (presenter, tools, easter egg)
+          js/main.js (engine)  |  js/helix.js (3D background)  |  assets/ (images, sound)
+  HOW IT WORKS: elements with data-t="key" get their text from js/content.js. To change a text, edit content.js, not this file.
+  PLACEHOLDERS to fill: [A ADAPTER] marks in js/content.js (process steps), media slots (add your own images or videos),
+                        team names and roles in js/config.js.
+  =====================================================================
+-->
+
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Procédés de purification de biomolécules | Exposé interactif</title>
+<meta name="description" content="Exposé interactif sur la purification des biomolécules : sept techniques, laboratoire virtuel, défi du procédé et étude de l’acarbose CORECT® (Biopharm).">
+<meta name="keywords" content="purification, biomolécules, chromatographie, centrifugation, électrophorèse, acarbose, CORECT, Biopharm, biotechnologie microbienne, USTHB">
+<meta name="author" content="Zekraoui Rabah-Allaa Eddine">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0b2b3a">
+<meta name="color-scheme" content="dark">
+<meta name="format-detection" content="telephone=no">
+<link rel="canonical" href="https://VOTRE-NOM.github.io/purification-biomolecules/">
+<link rel="alternate" hreflang="x-default" href="https://VOTRE-NOM.github.io/purification-biomolecules/">
+<!-- SITE ADDRESS: replace https://VOTRE-NOM.github.io/purification-biomolecules/ everywhere with tools/set-url.py (see GUIDE-PUBLICATION.md) -->
+<!-- Icons -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/icons/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/icons/icon-180.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="msapplication-TileColor" content="#0b2b3a">
+<meta name="msapplication-TileImage" content="assets/icons/icon-150.png">
+<meta name="msapplication-config" content="browserconfig.xml">
+<!-- Open Graph: Facebook, LinkedIn, WhatsApp, Telegram, Messenger, Pinterest, Slack, Discord -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Procédés de purification de biomolécules">
+<meta property="og:title" content="Procédés de purification de biomolécules | Exposé interactif">
+<meta property="og:description" content="Sept techniques, un laboratoire virtuel, un défi du procédé et l’étude de l’acarbose CORECT® (Biopharm).">
+<meta property="og:url" content="https://VOTRE-NOM.github.io/purification-biomolecules/">
+<meta property="og:image" content="https://VOTRE-NOM.github.io/purification-biomolecules/assets/social/og-image.png">
+<meta property="og:image:secure_url" content="https://VOTRE-NOM.github.io/purification-biomolecules/assets/social/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Procédés de purification de biomolécules : matériel de laboratoire illustré et titre de l’exposé">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<!-- Facebook (optional): <meta property="fb:app_id" content="YOUR_APP_ID"> -->
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Procédés de purification de biomolécules | Exposé interactif">
+<meta name="twitter:description" content="Sept techniques, un laboratoire virtuel, un défi du procédé et l’étude de l’acarbose CORECT® (Biopharm).">
+<meta name="twitter:image" content="https://VOTRE-NOM.github.io/purification-biomolecules/assets/social/og-image.png">
+<meta name="twitter:image:alt" content="Procédés de purification de biomolécules : matériel de laboratoire illustré et titre de l’exposé">
+<!-- Twitter / X account (optional): <meta name="twitter:site" content="@votre_compte"> <meta name="twitter:creator" content="@votre_compte"> -->
+<!-- Pinterest -->
+<meta name="pinterest-rich-pin" content="true">
+<link rel="image_src" href="https://VOTRE-NOM.github.io/purification-biomolecules/assets/social/pinterest.png">
+<!-- Structured data (Google) -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://VOTRE-NOM.github.io/purification-biomolecules/#website", "url": "https://VOTRE-NOM.github.io/purification-biomolecules/", "name": "Procédés de purification de biomolécules", "inLanguage": ["fr", "en"], "author": {"@id": "https://VOTRE-NOM.github.io/purification-biomolecules/#author"}}, {"@type": "Person", "@id": "https://VOTRE-NOM.github.io/purification-biomolecules/#author", "name": "Zekraoui Rabah-Allaa Eddine", "affiliation": {"@type": "CollegeOrUniversity", "name": "Université des Sciences et de la Technologie Houari Boumediene (USTHB)"}}, {"@type": "LearningResource", "@id": "https://VOTRE-NOM.github.io/purification-biomolecules/#resource", "name": "Procédés de purification de biomolécules", "description": "Exposé interactif sur la purification des biomolécules : sept techniques, laboratoire virtuel, défi du procédé et étude de l’acarbose CORECT® (Biopharm).", "url": "https://VOTRE-NOM.github.io/purification-biomolecules/", "inLanguage": ["fr", "en"], "learningResourceType": "Exposé interactif", "educationalLevel": "Université", "about": ["Purification des biomolécules", "Chromatographie", "Acarbose"], "author": {"@id": "https://VOTRE-NOM.github.io/purification-biomolecules/#author"}, "copyrightHolder": {"@id": "https://VOTRE-NOM.github.io/purification-biomolecules/#author"}, "copyrightYear": 2026, "image": "https://VOTRE-NOM.github.io/purification-biomolecules/assets/social/og-image.png", "isPartOf": {"@id": "https://VOTRE-NOM.github.io/purification-biomolecules/#website"}}]}</script>
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+</head>
+<body>
+<a class="skip" href="#intro">Aller au contenu / Skip to content</a><div id="cur"></div><canvas id="gl" aria-hidden="true"></canvas><div id="bar"></div><div class="bars t"></div><div class="bars b"></div>
+
+
+
+<header>
+  <div class="logos"><img src="assets/logo-fsb.jpg" alt="Logo Faculté des Sciences Biologiques"><img src="assets/logo-usthb.png" alt="Logo USTHB"></div>
+  <nav id="nav"></nav><button id="pres"></button><button id="lang">EN</button>
+</header>
+
+<main>
+<!-- HERO: title, abstract, module, academic year, examiner, team. Texts: js/content.js. Team names: js/config.js -->
+<section id="hero"><h1 data-t="title"></h1><p data-t="sub"></p><p class="gl" data-t="abs"></p>
+  <p class="exam"><span data-t="mod"></span> : <b data-t="modv"></b><br><span data-t="yr"></span> : <b data-t="yrv"></b><br><span data-t="exam"></span> : <b data-t="examn"></b></p>
+  <h3 style="margin-top:20px" data-t="team"></h3><div class="team" id="team"></div><br><a class="btn" href="#intro" data-t="start"></a></section>
+<div class="tick" aria-hidden="true"><div></div></div>
+<section class="sc rv" id="plan"><h2 data-t="plan_t"></h2><div class="gl" id="plan_l"></div></section>
+
+<!-- I. INTRODUCTION (PROBLEMATIQUE) -->
+<section class="sc rv" id="intro"><div class="chap">I</div><h2 data-t="n1"></h2>
+  <div class="gl" data-t="i_p"></div>
+  <div class="card"><h3 data-t="i_qt"></h3><p data-t="i_q"></p></div>
+  <svg class="ill" viewBox="0 0 640 150" role="img" aria-label="Mixture to pure molecule"><g fill="none" stroke="#ffffff55"><path d="M120 20h120l-40 60v40h-40V80z"/><path d="M470 20h120l-40 60v40h-40V80z"/></g><g id="dots"></g><path d="M270 75h160" stroke="#ff9f43" stroke-width="3" stroke-dasharray="8 8"><animate attributeName="stroke-dashoffset" from="32" to="0" dur="1s" repeatCount="indefinite"/></path><circle cx="520" cy="55" r="9" fill="#2dd4bf"/><circle cx="545" cy="75" r="9" fill="#2dd4bf"/><circle cx="500" cy="85" r="9" fill="#2dd4bf"/></svg>
+  <img src="assets/banner-fsb.jpg" alt="Logo Faculté des Sciences Biologiques" style="width:100%;border-radius:16px;border:1px solid var(--line)">
+  <div class="gl kt" data-kt="0"></div>
+</section>
+
+<!-- II. GENERALITES -->
+<section class="sc rv" id="gen"><div class="chap">II</div><h2 data-t="n2"></h2>
+  <div class="grid" data-cards="g_d"></div>
+  <h3 style="margin:26px 0 10px" data-t="g_ct"></h3><div class="grid" data-cards="g_c"></div>
+  <h3 style="margin:26px 0 10px" data-t="g_ot"></h3><div class="gl" data-t="g_o"></div>
+  <h3 style="margin:26px 0 10px" data-t="hist_t"></h3><div class="timeline" id="histl"></div>
+  <h3 style="margin:26px 0 10px" data-t="imp_t"></h3><div class="grid" id="imp"></div>
+  <h3 style="margin:26px 0 10px" data-t="lex_t"></h3><input type="search" id="lexq" class="lexq" aria-label="Search"><div id="lex"></div>
+  <div class="gl kt" data-kt="1"></div>
+</section>
+
+<!-- III. METHODES ET MATERIELS -->
+<section class="sc rv" id="met"><div class="chap">III</div><h2 data-t="n3"></h2>
+  <h3 data-t="m1"></h3><p class="out" data-t="m1p"></p>
+  <div id="estage"><div class="edit" id="edit" tabindex="0" aria-label="Methods edit"><div class="segs" id="segs"></div><div class="ring2"></div><div class="rec" id="rec">&#9679; REC 00:00.0</div><div class="no" id="no"></div><div class="tl"><b id="tlb"></b></div>
+  <div class="nm" id="nm"></div><div class="fig" id="fig"></div><div class="roster" id="roster"></div><div class="cp" id="cp"></div>
+  <div class="choose"><button id="eprev" aria-label="Previous">&#9664;</button><span>CHOOSE</span><button id="enext" aria-label="Next">&#9654;</button><i class="hand" id="hand">&#128070;</i></div></div><div class="efbar"><button id="efsnd" aria-label="Sound">&#128263;</button><button id="efc" aria-label="Close">&#10005;</button></div></div>
+  <button class="btn big" id="snd"></button> <button class="mini" id="efs"></button>
+  <div class="gl" id="fiche"></div>
+  <div class="card lab" id="lab"><h3 data-t="lab_t"></h3><p class="out" data-t="lab_p"></p>
+   <div class="ltabs" id="ltabs" role="tablist"></div>
+   <div class="labrow"><svg id="labsvg" viewBox="0 0 260 220" role="img" aria-label="Lab"></svg></div>
+   <div id="lctl"></div><p class="out" id="rcfo" aria-live="polite"></p></div>
+  
+  <h3 style="margin:26px 0 10px" data-t="cmp_t"></h3><div class="tw"><table id="cmp"></table></div>
+  <h3 style="margin:26px 0 10px" data-t="atl_t"></h3><div class="atl" id="atl"></div>
+  <h3 style="margin:26px 0 4px" data-t="m2"></h3><p class="out" data-t="m2p"></p><div id="st1"></div>
+  <h3 style="margin:26px 0 8px" data-t="pb_t"></h3><p class="out" data-t="pb_p"></p><div class="card" id="pb"></div>
+  <h3 id="adv" style="margin:34px 0 4px" data-t="adv_t"></h3><p class="out" data-t="adv_p"></p><div class="grid" id="advg"></div>
+  <h3 id="qcs" style="margin:26px 0 8px" data-t="m3"></h3><div class="grid" id="qc"></div>
+  <p class="out"><b id="qcn">0</b> / 8 <span data-t="valid"></span></p><div class="gauge"><div class="g1" id="qcg"></div></div>
+  <div class="gl" style="margin-top:14px" data-t="m3p"></div>
+  <h3 style="margin:22px 0 10px" data-t="qcc_t"></h3><div class="tw"><table id="qcc"></table></div>
+  <h3 id="qbdh" style="margin:30px 0 6px" data-t="qbd_t"></h3><p class="out" data-t="qbd_p"></p><div class="qbdc" id="qbdc"></div><div class="grid" id="qbd"></div>
+  <div class="vids" id="vids"></div>
+  <div class="gl kt" data-kt="2"></div>
+</section>
+
+<!-- IV. ETUDE D'UN EXEMPLE : ACARBOSE (BIOPHARM) / GLUCOBAY / ACTINOPLANES -->
+<section class="sc rv" id="ex"><div class="chap">IV</div><h2 data-t="n4"></h2>
+  <div class="grid" data-cards="e_c"></div>
+  <div class="kpis" id="kpis"></div>
+  <figure class="photo"><img src="assets/corect-box.jpg" alt="CORECT Acarbose 50 mg Biopharm" loading="lazy"><figcaption data-t="e_cap"></figcaption></figure>
+  <h3 style="margin:18px 0 10px" data-t="pf_t"></h3><div class="tw"><table id="pf"></table></div>
+  <div class="gl" style="margin-top:16px" data-t="e_p"></div>
+  <p class="warn" data-t="e_w"></p>
+  <h3 style="margin:22px 0 8px" data-t="ac_t"></h3><p class="out" data-t="ac_p"></p><div class="card" id="ac"></div>
+  <div class="flow" id="flow"></div><h3 style="margin:22px 0 4px" data-t="e_ft"></h3><p class="out" data-t="e_fp"></p><div id="st2"></div>
+  <div class="gl" style="margin-top:14px" data-t="e_d"></div>
+  <h3 id="e2h" style="margin:30px 0 6px" data-t="e2_t"></h3><p class="out" data-t="e2_p"></p><h3 style="margin:14px 0 4px" data-t="e2_ft"></h3><p class="out" data-t="e2_fp"></p><div id="st3"></div><div class="tw" style="margin-top:14px"><table id="e2tbl"></table></div>
+  <div class="gl kt" data-kt="3"></div>
+</section>
+
+<!-- V. CONCLUSION  -->
+<section class="sc rv" id="con"><div class="chap">V</div><h2 data-t="n5"></h2>
+  <div class="gl" data-t="c_p"></div>
+  <h3 style="margin:22px 0 8px" data-t="jr_t"></h3><p class="out" data-t="jr_p"></p><div class="card" id="jr"></div>
+  
+  
+</section>
+
+<!-- VI. REFERENCES (all opened and checked, see list) -->
+<section class="sc rv" id="ref"><div class="chap">VI</div><h2 data-t="n6"></h2>
+  <h3 id="dlh" style="margin:6px 0 6px" data-t="dl_t"></h3><p class="out" data-t="dl_p"></p><div class="grid" id="dl"></div><p class="out" data-t="dl_note" style="margin-top:8px"></p>
+  <ol class="refs gl" id="refs"></ol>
+  <div class="card" id="qr"></div>
+</section>
+</main>
+
+<footer><div class="logos"><img src="assets/logo-fsb.jpg" alt="Logo Faculté des Sciences Biologiques"><img src="assets/logo-usthb.png" alt="Logo USTHB"></div><p data-t="fac"></p>
+<p style="margin-top:10px">&copy; 2026 Zekraoui Rabah Allaa Eddine <button class="sq" id="sq" aria-label="Easter egg">🦑</button>. <span data-t="rights"></span></p></footer>
+
+<div id="pnotes" hidden><div id="ptl"></div><div id="pnt"></div></div>
+<div id="pbar" hidden><button id="pp" aria-label="Previous">&#9664;</button><span id="pc"></span><span id="pt">00:00</span><button id="pn" aria-label="Next">&#9654;</button><button id="ptm" aria-label="Timer">&#9201; 15</button><button id="pl" aria-label="Laser">&#9673;</button><button id="px" aria-label="Exit">&#10005;</button></div>
+<nav id="sdots" aria-label="Sections"></nav>
+<div id="tools"><div id="tp"><button id="tdn">A-</button><button id="tup">A+</button><button id="lt">&#9889; Lite</button><button id="tprt">&#128424; PDF</button><button id="thc">&#9681; Contrast</button><button id="tdy">Ab Dyslexia</button><button id="tsr">&#128269; Search</button><button id="thp">? Help</button><button id="tsh">&#8599; Link</button><button id="trf">&#128203; Refs</button></div><button id="tb" aria-label="Tools">Aa</button></div>
+<noscript><p style="padding:30px;color:#fff;background:#03080f">Please enable JavaScript to view this presentation. / Activez JavaScript pour afficher cette présentation.</p></noscript>
+<!-- Site scripts. ORDER MATTERS: do not reorder -->
+<script src="js/core.js"></script>
+<script src="js/content.js"></script>
+<script src="js/config.js"></script>
+<script src="js/audio-data.js"></script>
+<script src="js/scenes.js"></script>
+<script src="js/labs.js"></script>
+<script src="js/builder.js"></script>
+<script src="js/journey.js"></script>
+<script src="js/acarbose.js"></script>
+<script src="js/qr.js"></script>
+<script src="js/advanced.js"></script>
+<script src="js/extra.js"></script>
+<script src="js/downloads.js"></script>
+<script src="js/edit.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/main.js"></script>
+<script src="js/helix.js"></script>
+</body>
+</html>
