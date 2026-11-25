@@ -6,9 +6,6 @@
           js/content.js (ALL TEXTS fr/en + references)  |  js/config.js (team, colors)  |  js/scenes.js (animated drawings)
           js/labs.js (laboratory)  |  js/edit.js (methods edit + sound)  |  js/ui.js (presenter, tools, easter egg)
           js/main.js (engine)  |  js/helix.js (3D background)  |  assets/ (images, sound)
-  HOW IT WORKS: elements with data-t="key" get their text from js/content.js. To change a text, edit content.js, not this file.
-  PLACEHOLDERS to fill: [A ADAPTER] marks in js/content.js (process steps), media slots (add your own images or videos),
-                        team names and roles in js/config.js.
   =====================================================================
 -->
 
@@ -26,7 +23,6 @@
 <meta name="format-detection" content="telephone=no">
 <link rel="canonical" href="https://VOTRE-NOM.github.io/purification-biomolecules/">
 <link rel="alternate" hreflang="x-default" href="https://VOTRE-NOM.github.io/purification-biomolecules/">
-<!-- SITE ADDRESS: replace https://VOTRE-NOM.github.io/purification-biomolecules/ everywhere with tools/set-url.py (see GUIDE-PUBLICATION.md) -->
 <!-- Icons -->
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/icon-32.png">
@@ -79,7 +75,7 @@
 </header>
 
 <main>
-<!-- HERO: title, abstract, module, academic year, examiner, team. Texts: js/content.js. Team names: js/config.js -->
+<!-- HERO: title, abstract, module, academic year, examiner, team. --->
 <section id="hero"><h1 data-t="title"></h1><p data-t="sub"></p><p class="gl" data-t="abs"></p>
   <p class="exam"><span data-t="mod"></span> : <b data-t="modv"></b><br><span data-t="yr"></span> : <b data-t="yrv"></b><br><span data-t="exam"></span> : <b data-t="examn"></b></p>
   <h3 style="margin-top:20px" data-t="team"></h3><div class="team" id="team"></div><br><a class="btn" href="#intro" data-t="start"></a></section>
