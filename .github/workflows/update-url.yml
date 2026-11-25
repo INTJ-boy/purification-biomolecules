@@ -1,0 +1,45 @@
+
+name: Update Biomolecules Website URL
+
+on:
+  workflow_dispatch:
+    inputs:
+      website_url:
+        description: "https://intj-boy.github.io/purification-biomolecules/"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Execute Python script
+        env:
+          WEBSITE_URL: ${{ inputs.website_url }}
+        run: python tools/set-url.py "$WEBSITE_URL"
+
+      - name: Commit modifications
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if ! git diff --cached --quiet; then
+            git commit -m "Update website URLs"
+            git push
+          else
+            echo "No files needed updating."
+          fi
