@@ -1,9 +1,3 @@
-/* =====================================================================
-   DOWNLOADS.JS : the "Documents a telecharger" cards at the end of the page (Word report, one-page PDF, PowerPoint, A3 poster)
-   The real files are in assets/downloads/ (same names). To update a document, replace the file with a new one of the SAME NAME.
-   Previews are the images in assets/previews/ (word1, word2, sum1, ppt1 to ppt8, poster1): export the first page of your new file as a JPG with the same name.
-   Texts: js/content.js (keys dl_*).
-   ===================================================================== */
 const DL_KIND=['word','pdf','ppt','poster'];
 const DL_FILES={word:'assets/downloads/Compte_rendu_purification_biomolecules.docx',pdf:'assets/downloads/Resume_1_page.pdf',ppt:'assets/downloads/Resume_PowerPoint.pptx',poster:'assets/downloads/Affiche_poster_A3.pdf'};
 const DL_PREV={word:['assets/previews/word1.jpg','assets/previews/word2.jpg'],pdf:['assets/previews/sum1.jpg'],ppt:['assets/previews/ppt1.jpg','assets/previews/ppt2.jpg','assets/previews/ppt3.jpg','assets/previews/ppt4.jpg','assets/previews/ppt5.jpg','assets/previews/ppt6.jpg','assets/previews/ppt7.jpg','assets/previews/ppt8.jpg'],poster:['assets/previews/poster1.jpg']};
