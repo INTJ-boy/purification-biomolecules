@@ -16,4 +16,4 @@ const MT=[[1,2,5],[2,2,4],[2,1,4],[3,2,3],[5,5,2],[5,3,2],[4,3,3]];
 
 /* ---- WEBSITE ADDRESS used by the QR code (end of the page). Replace the placeholder by your real link once the site is hosted on GitHub Pages,
         for example "https://zekraoui.github.io/purification-biomolecules/" ---- */
-const SITE_URL="https://VOTRE-NOM.github.io/purification-biomolecules/";
+const SITE_URL="https://intj-boy.github.io/purification-biomolecules/";

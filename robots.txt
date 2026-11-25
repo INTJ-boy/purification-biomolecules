@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://VOTRE-NOM.github.io/purification-biomolecules/sitemap.xml
+Sitemap: https://intj-boy.github.io/purification-biomolecules/sitemap.xml
