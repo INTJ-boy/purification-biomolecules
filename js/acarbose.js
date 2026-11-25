@@ -1,10 +1,3 @@
-/* =====================================================================
-   ACARBOSE.JS : "Comment agit l'acarbose ?" (chapter IV)
-   1. a simplified structure schematic: 4 rings = acarviosine (2 rings) + maltose (2 rings)
-   2. a mechanism animation: the alpha-glucosidase enzyme (pac-man) cuts glucose units off a starch chain.
-      Without acarbose it bites fast and blood glucose rises; with acarbose the enzyme is blocked and it rises slowly.
-   Rates: AC_P = seconds between two bites (without / with acarbose). Texts: js/content.js (keys ac_*).
-   ===================================================================== */
 const AC_P=[.8,3.2];let acOn=0,acRaf=0,acLevel=.12,acFly=[],acLast=0,acC=-1,acVis=false;
 function acHex(x,y,r,db){let p='';for(let i=0;i<6;i++){const a=Math.PI/3*i+Math.PI/6;p+=(i?'L':'M')+(x+r*Math.cos(a)).toFixed(1)+' '+(y+r*Math.sin(a)).toFixed(1)}
  return `<path d="${p}Z" fill="${db?'#2dd4bf33':'#ffffff10'}" stroke="#e8f2f8" stroke-width="2"/>`+(db?`<line x1="${x-r*.5}" y1="${y-r*.7}" x2="${x+r*.5}" y2="${y-r*.7}" stroke="#ff9f43" stroke-width="2.4"/>`:'')}
