@@ -23,7 +23,7 @@ biomolecule purification.
 -   **Process stages**  Follow the downstream purification workflow,
     from clarification and capture to intermediate purification,
     polishing, and final preparation.
--   **Animated illustrations** --- Visual explanations of the techniques
+-   **Animated illustrations**  Visual explanations of the techniques
     and the journey of a molecule through a purification process.
 -   **Virtual laboratory**  Interactive equipment models and
     adjustable parameters for the seven core techniques, plus advanced
