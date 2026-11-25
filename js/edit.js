@@ -1,11 +1,3 @@
-/* =====================================================================
-   EDIT.JS : the METHODS "character select" edit, synchronised with the real sound of your video
-   show(i)   draws technique i (or the roster when i = -1)        step(d) = previous / next
-   fiche(i)  the technical sheet under the stage                  funk(on) = start / stop the sound
-   BEAT GRID of the sound (measured): first kick at T0 = 4.33 s, one beat every BP = 0.5805 s (about 103 BPM).
-   EDIT PLAN: see the comment above function sched (3 seamless loops, trimmed sound).
-   The sound stops by itself when the stage leaves the screen, when the tab is hidden or when the page closes.
-   ===================================================================== */
 let ei=-1,eb=0,AC,fon=false;
 function show(i){ei=i;const t=T[L],st=$('#edit'),nm=$('#nm'),ro=i<0;st.classList.remove('swap');void st.offsetWidth;st.classList.add('swap');st.classList.remove('sw0','sw1','sw2');if(i>=0)st.classList.add('sw'+i%3);$('#no').textContent=i<0?'':String(i+1).padStart(2,'0')+'/07';document.querySelectorAll('#segs i').forEach((s,j)=>s.className=j<i?'f':j==i?'on':'');
  $('#roster').style.display=ro?'grid':'none';$('#fig').style.display=ro?'none':'flex';if(ro)$('#fig').innerHTML='';
@@ -24,12 +16,6 @@ $('#edit').addEventListener('keydown',e=>{if(e.key=='ArrowRight'||e.key=='ArrowD
 let tx=0,ty=0;$('#edit').addEventListener('touchstart',e=>{tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
 $('#edit').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx,dy=e.changedTouches[0].clientY-ty;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy))step(dx<0?1:-1)});
 
-/* REAL SOUND from your video, TRIMMED before the TikTok ending sound.
-   Measured: the music repeats exactly every 16 beats (9.304 s), so a 16-beat phrase loops with no audible jump.
-   Beat grid: first kick T0 = 4.335 s, one beat every BP = 0.5815 s (about 103 BPM).
-   The phrase (NB = 16 beats) loops LOOPS = 3 times, then the sound fades out and stops by itself.
-   EDIT PLAN of each loop (function sched): beats 0 to 13 = 7 techniques x 2 beats each, beats 14 to 15 = roster (like the end of your video).
-   Every loop of the picture lasts exactly as long as a loop of the sound. If the cuts feel early or late, change T0. */
 let AB=null,AS=null,GN=null,t0=0,lastB=-9,raf=0;const T0=4.335,BP=.5815,NB=16,LOOPS=3,LOOPLEN=NB*BP,LEAD=.012;
 function sched(b){if(b<14)return b%2?undefined:b/2;return b==14?-1:undefined}
 function pulse(){const h=$('#hand'),e=$('#edit');h.classList.remove('tap');void h.offsetWidth;h.classList.add('tap');e.classList.add('b');setTimeout(()=>e.classList.remove('b'),120)}
@@ -47,6 +33,5 @@ async function funk(on){const b=$('#snd'),t=T[L];
   t0=AC.currentTime+.05;AS.start(t0);AS.stop(t0+T0+LOOPS*LOOPLEN+.4);lastB=-9;b.classList.add('on');b.innerHTML='&#128266; '+t.snd1;if(window.efsSync)efsSync();etick()}catch(e){fon=false}}
 $('#snd').onclick=()=>funk(!fon);
 
-/* STOP THE SOUND when the edit leaves the screen, the tab hides, or the page closes */
 new IntersectionObserver(es=>es.forEach(e=>{if(e.intersectionRatio<.35&&fon)funk(false)}),{threshold:[0,.35]}).observe($('#edit'));
 document.addEventListener('visibilitychange',()=>{if(document.hidden&&fon)funk(false)});addEventListener('pagehide',()=>{if(fon)funk(false)});
