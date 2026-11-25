@@ -1,13 +1,3 @@
-/* =====================================================================
-   BUILDER.JS : "Defi : construisez le procede" (process challenge game, inside 4.2)
-   The player picks a PRODUCT (acarbose, protein, plasmid or virus), then chains up to 5 operations among 10 techniques
-   (6 classic + 4 advanced). The model computes purity, yield and cost. Goal: purity 98 or more, yield 50 or more, cost within budget.
-   PB_STARTS = starting broth per product [product, debris, proteins, close analogs, pigments] (illustrative units)
-   PB_OPS    = per technique: r = share removed of [debris, proteins, analogs, pigments], y = yield, c = cost
-   PB_MOD    = per product and technique: [removal multiplier, yield multiplier] (how well the technique suits the product)
-   PB_STAGE  = logical stage of each technique (0 clarification, 1 capture, 2 chromatography, 3 finishing). A technique placed after a later stage works half as well.
-   PB_SOL    = the suggested solution for each product. Texts: js/content.js (keys pb_*). All numbers are illustrative.
-   ===================================================================== */
 const PB_STARTS=[[100,400,300,80,60],[100,350,350,100,30],[100,300,300,60,12]],PB_COL=['#2dd4bf','#a97f3a','#b18cff','#ff5f8f','#ffd23f'],PB_BUDGET=90;
 const PB_OPCOL=['#00bcd4','#ff7043','#8bc34a','#e11d96'];
 /* order of PB_OPS: 0 centrifugation, 1 filtration, 2 precipitation, 3 extraction, 4 chromatography, 5 crystallization, 6 ATPS, 7 monolith, 8 continuous chromatography, 9 preparative electrophoresis */
