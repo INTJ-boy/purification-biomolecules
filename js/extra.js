@@ -1,10 +1,4 @@
-/* =====================================================================
-   EXTRA.JS : chapter extras
-   1. history timeline (chapter II)           2. quality by design cards (chapter III, 6.1)
-   3. second example: monoclonal antibody (chapter IV): stepper + comparison table with acarbose
-   4. QR code of the website (end of the page), driven by SITE_URL in js/config.js
-   Texts: js/content.js (keys hist, qbd, e2_*, s3, e2cmp, qr_*).
-   ===================================================================== */
+
 function qrBuild(){const t=T[L],b=$('#qr');if(!b)return;const ph=/VOTRE|YOUR/i.test(SITE_URL);let svg='';try{svg=qrSvg(SITE_URL,200)}catch(e){svg=''}
  b.innerHTML=`<div class="qrw">${svg}<div><h3>${t.qr_t}</h3><p>${t.qr_p}</p><p class="out"><b>${SITE_URL}</b></p>${ph?`<p class="warn">${t.qr_ph}</p>`:''}<button class="mini" id="qrc">${t.qr_copy}</button></div></div>`;
  $('#qrc').onclick=function(){if(navigator.clipboard)navigator.clipboard.writeText(SITE_URL).then(()=>flash(this,t.pb_copied)).catch(()=>{})}}
