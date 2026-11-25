@@ -1,10 +1,3 @@
-/* =====================================================================
-   CONTENT.JS : EVERY TEXT OF THE WEBSITE (French "fr" and English "en")
-   HOW TO EDIT: change only the text between the quotes. HTML tags such as
-   <b>, <i>, <sup> are allowed. Keep the same keys in "fr" and "en".
-   Texts marked [A ADAPTER] / [TO ADAPT] are placeholders for your own data.
-   Numbers like [6] point to the REFERENCES list at the bottom of this file.
-   ===================================================================== */
 const T={
  fr:{
   /* ---- HERO / TITLE PAGE (title, abstract, module, year, examiner, team labels) ---- */
@@ -390,8 +383,6 @@ const VID=[
   ["Downstream processing biopharmaceutical","Procédé aval biopharmaceutique","downstream processing biopharmaceutical"],
   ["Acarbose mechanism of action","Acarbose mécanisme d’action","acarbose mechanism of action"],
 ];
-
-/* ---- REFERENCES (numbers match [n] in the texts). Check every link before submitting ---- */
 const REFS=[
   /* [1] */ "Xue Y-P, Qin J-W, Wang Y-J, Wang Y-S, Zheng Y-G. Enhanced production of acarbose and concurrently reduced formation of impurity C by addition of validamine in fermentation of <i>Actinoplanes utahensis</i> ZJB-08196. 2013. DOI 10.1155/2013/705418. <a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC3581085' target='_blank' rel='noopener'>PMC3581085</a>",
   /* [2] */ "Zhao Q, Xie H, Peng Y, Wang X, Bai L. Improving acarbose production and eliminating the by-product component C with an efficient genetic manipulation system of <i>Actinoplanes</i> sp. SE50/110. 2018. PMID 29552655. <a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC5851932' target='_blank' rel='noopener'>PMC5851932</a>",
