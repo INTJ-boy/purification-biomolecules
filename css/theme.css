@@ -1,0 +1,7 @@
+/* =====================================================================
+   THEME.CSS : COLORS AND FONTS. Change the look of the whole site here.
+   --bg page background | --ice main text | --mute secondary text | --teal / --amber accent colors
+   --glass panel background | --line borders | --d title font | --b body font
+   ===================================================================== */
+:root{color-scheme:dark;--bg:#03080f;--ice:#d8f1ff;--mute:#8fa9ba;--teal:#2dd4bf;--amber:#ff9f43;--glass:#08141fcc;--line:#ffffff24;
+--d:'Bricolage Grotesque','Trebuchet MS','Segoe UI',system-ui,-apple-system,Roboto,sans-serif;--b:'Instrument Sans','Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
