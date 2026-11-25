@@ -1,4 +1,4 @@
-![biomolecules-purification website banner](assets/social/og-image.png)
+![purification-biomolecules website banner](assets/social/og-image.png)
 
 # Procédés de purification de biomolécules 🧬
 
