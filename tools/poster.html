@@ -1,0 +1,44 @@
+<!doctype html>
+<!--
+  FICHIER MODIFIABLE : poster.html
+  Pour mettre a jour : 1) changez SITE_URL dans ../js/config.js  2) modifiez les textes ci-dessous si besoin  3) ouvrez ce fichier dans Google Chrome
+  4) Ctrl+P, destination : Enregistrer au format PDF, marges : Aucune, activez les graphiques d arriere-plan, echelle 100 %.
+-->
+<html lang="fr"><head><meta charset="utf-8"><title>Affiche</title><style>
+@page{size:297mm 420mm;margin:0}*{box-sizing:border-box;margin:0}
+html,body{width:297mm;height:420mm;overflow:hidden}body{position:relative;background:#fff;font-family:'Liberation Sans','Helvetica Neue',Arial,sans-serif;color:#17232d;font-size:10.6pt;line-height:1.38}
+.head{background:#0b2b3a;color:#fff;padding:9mm 14mm 7mm;display:flex;gap:10mm;align-items:center}
+.head img{height:23mm;background:#fff;padding:1.5mm;border-radius:2mm}
+.head h1{font-family:'Liberation Serif',Georgia,serif;font-size:34pt;line-height:1.05;font-weight:700}.head h2{font-weight:400;font-size:15pt;color:#bfe3dc;margin-top:2.5mm}
+.by{margin-top:4mm;font-size:11.5pt;color:#e9f4f2}.by b{font-size:13pt}
+#wrap{transform-origin:0 0;position:relative}.body{padding:6mm 14mm 0;display:grid;grid-template-columns:repeat(12,1fr);gap:4.5mm 6mm}
+.box{border-top:2.2px solid #0b4a56;padding-top:2mm}.box h3{font-family:'Liberation Serif',Georgia,serif;font-size:15pt;color:#0b2b3a;margin-bottom:2mm}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}.c5{grid-column:span 5}.c4{grid-column:span 4}
+img.f{width:100%;display:block;border:1px solid #d9dfe0}.cap{font-size:8.4pt;color:#55636d;margin-top:1.5mm}
+ul{padding-left:4.5mm}li{margin-bottom:1.2mm}
+table{border-collapse:collapse;width:100%;font-size:9.6pt}td,th{border:1px solid #c9d3d5;padding:1.3mm 2mm;text-align:left;vertical-align:top}th{background:#eef3f3}
+.key{background:#f3ede0;border-left:4px solid #c25b00;padding:3mm 4mm;font-size:12pt}.key b{color:#8a3f00}
+.nums{display:flex;gap:3mm;margin:2mm 0}.nums div{flex:1;border:1px solid #d9dfe0;padding:2mm;text-align:center}.nums b{display:block;font-family:'Liberation Serif',Georgia,serif;font-size:19pt;color:#0b4a56}.nums small{font-size:8pt}
+.foot{position:absolute;left:0;right:0;bottom:0;background:#0b2b3a;color:#bcd7d2;padding:4mm 14mm;font-size:9pt;display:flex;justify-content:space-between;align-items:center}
+.qr{display:flex;gap:4mm;align-items:center}.qr svg{width:30mm;height:30mm}
+.refs{font-size:8pt;color:#55636d}
+</style></head><body>
+<div class="head"><img src="../assets/logo-fsb.jpg"><div style="flex:1"><h1>Procédés de purification de biomolécules</h1><h2>Étude d’un exemple : l’acarbose CORECT® (Biopharm), issue d’<i>Actinoplanes</i></h2>
+<div class="by"><b>Zekraoui Rabah-Allaa Eddine</b><br>Module : TD Biotechnologie microbienne | Faculté des Sciences Biologiques, USTHB | Année universitaire 2026/2027<br>Examiné par : Professeure Mme Benchiekh</div></div><img src="../assets/logo-usthb.png"></div>
+<div id="wrap"><div class="body" id="bd">
+<div class="box c7"><h3>Problématique</h3><div class="key">Comment obtenir une biomolécule <b>pure, stable et active à l’échelle industrielle</b> ? La séparer d’un mélange très complexe, sans la dénaturer, avec un bon rendement, un coût acceptable et un procédé reproductible et validé.</div>
+<p style="margin-top:2.5mm">Les biomolécules sont fabriquées par des cellules vivantes, dans un milieu riche en impuretés (protéines de l’hôte, ADN, endotoxines, pigments, sels). La purification protège le patient et pèse lourd dans le coût de production.</p></div>
+<div class="box c5"><h3>Objectifs de la purification</h3><ul><li><b>Pureté</b> : éliminer les impuretés et les molécules apparentées.</li><li><b>Activité et stabilité</b> préservées.</li><li><b>Rendement</b> élevé, <b>coût</b> maîtrisé.</li><li><b>Reproductibilité</b> (bonnes pratiques de fabrication).</li></ul></div>
+<div class="box c6"><h3>Sept familles de techniques</h3><img class="f" src="../assets/figures/techniques.png" style="background:#fff"><div class="cap">Chaque famille est illustrée par son matériel de laboratoire.</div></div>
+<div class="box c6"><h3>Les types de chaque technique</h3><ul style="font-size:10pt"><li><b>Centrifugation</b> : différentielle, gradient de densité, ultracentrifugation</li><li><b>Filtration</b> : frontale, tangentielle, micro et ultrafiltration</li><li><b>Précipitation</b> : relargage, isoélectrique, solvants, PEG</li><li><b>Extraction</b> : solvant, contre-courant, systèmes biphasiques</li><li><b>Chromatographies</b> : échange d’ions, affinité, exclusion de taille, hydrophobe, monolithes</li><li><b>Cristallisation</b> : refroidissement, évaporation, anti-solvant, charbon actif</li><li><b>Électrophorèse</b> : SDS-PAGE, focalisation isoélectrique, capillaire</li></ul></div>
+<div class="box c6"><h3>Les étapes d’un procédé</h3><img class="f" src="../assets/figures/journey.png" style="background:#0a1520;max-height:46mm;object-fit:contain;margin:0 auto"><div class="cap">Disparition progressive des impuretés (valeurs illustratives). Clarification, capture, purification intermédiaire, polissage, formulation : chaque étape gagne en pureté et perd en rendement.</div></div>
+<div class="box c6"><h3>Contrôle qualité et qualité par la conception</h3><ul><li>HPLC, électrophorèse capillaire, spectrométrie de masse</li><li>ELISA et PCR : restes de la cellule hôte</li><li>Test LAL (endotoxines), stérilité</li><li>Méthodes validées selon ICH Q2(R2)</li><li>QbD : attributs critiques (CQA), paramètres critiques (CPP), espace de conception (ICH Q8 à Q10)</li></ul></div>
+<div class="box c5"><h3>Exemple : CORECT® (acarbose 50 mg)</h3><img class="f" src="../assets/corect-box.jpg" style="max-height:40mm;object-fit:contain;margin:0 auto"><p style="margin-top:2mm">Comprimés, boîte de 30, voie orale. Référence : GLUCOBAY® (Bayer). Inhibiteur des α-glucosidases.</p>
+<div class="nums"><div><b>6,6</b><small>g/L publiés</small></div><div><b>A à H</b><small>impuretés</small></div><div><b>1990</b><small>production industrielle</small></div></div></div>
+<div class="box c7"><h3>L’acarbose et un anticorps monoclonal</h3><table><tr><th></th><th>Acarbose (CORECT®)</th><th>Anticorps monoclonal</th></tr><tr><td>Nature</td><td>Petite molécule polaire</td><td>Grosse protéine fragile</td></tr><tr><td>Capture</td><td>Échange de cations</td><td>Protéine A</td></tr><tr><td>Affinage</td><td>Charbon actif</td><td>Échange d’ions</td></tr><tr><td>Sécurité virale</td><td>Peu concernée</td><td>Inactivation, nanofiltration</td></tr><tr><td>Finition</td><td>Cristallisation, séchage</td><td>Ultrafiltration, diafiltration</td></tr><tr><td>Point critique</td><td>Analogues, composant C</td><td>Agrégats, protéines de l’hôte, virus</td></tr></table><p style="margin-top:2mm">Le choix des méthodes dépend du produit.</p></div>
+<div class="box c8"><h3>Conclusion</h3><p>La purification transforme un mélange biologique complexe en une substance pure, stable et active, grâce à des techniques complémentaires validées par un contrôle qualité rigoureux. Défis actuels : coût de la chromatographie, procédés en continu et à usage unique, très grosses molécules (plasmides, virus).</p><div class="refs" style="margin-top:2mm"><b>Références clés</b> : Xue et al. 2013 ; Zhao et al. 2018 ; US 6,649,755 ; EMA, ICH Q2(R2) et Q8(R2) ; notice Glucobay (Bayer) ; BioPharm International.</div></div>
+<div class="box c4"><h3>Site interactif</h3><div class="qr"><div id="qrbox"></div><div style="font-size:9pt">Animations, laboratoire virtuel, défi du procédé. Scannez le code.</div></div></div>
+</div></div>
+<div class="foot"><span>© 2026 Zekraoui Rabah-Allaa Eddine</span><span>Faculté des Sciences Biologiques, USTHB</span></div><script>window.addEventListener("load",function(){const w=document.getElementById("wrap"),W=297/25.4*96,limit=(420-12)/25.4*96,top=document.querySelector(".head").getBoundingClientRect().height;let z=1;
+for(;z>0.6;z-=0.01){w.style.width=(W/z)+"px";w.style.transform="scale("+z+")";const b=w.getBoundingClientRect().bottom;if(b<=limit)break}
+window.__z=z;window.__b=Math.round(w.getBoundingClientRect().bottom/96*25.4)});</script><script src="../js/qr.js"></script><script src="../js/config.js"></script><script>document.getElementById("qrbox").innerHTML=qrSvg(SITE_URL,200)</script></body></html>

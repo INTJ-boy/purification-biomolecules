@@ -1,0 +1,41 @@
+<!doctype html>
+<!--
+  FICHIER MODIFIABLE : resume-1-page.html
+  Pour mettre a jour : 1) changez SITE_URL dans ../js/config.js  2) modifiez les textes ci-dessous si besoin  3) ouvrez ce fichier dans Google Chrome
+  4) Ctrl+P, destination : Enregistrer au format PDF, marges : Aucune, activez les graphiques d arriere-plan, echelle 100 %.
+-->
+<html lang="fr"><head><meta charset="utf-8"><style>
+@page{size:A4;margin:0}*{box-sizing:border-box;margin:0}
+html{height:297mm;overflow:hidden}body{position:relative;width:210mm;height:296mm;font-family:'Liberation Sans','DejaVu Sans',Arial,sans-serif;color:#10222e;font-size:8.9pt;line-height:1.28;overflow:hidden}
+.top{background:#0b2b3a;color:#fff;padding:6mm 12mm 4.5mm;display:flex;gap:8mm;align-items:center}
+.top img{height:15mm;background:#fff;border-radius:3mm;padding:1mm}.top h1{font-size:19pt;line-height:1.1;margin-bottom:1.5mm}.top p{font-size:9.5pt;color:#bfe9e2}
+.meta{font-size:8.4pt;color:#d8f1ee;margin-top:2mm}.wrap{padding:3.5mm 12mm 0}
+.plan{display:flex;gap:2mm;margin-bottom:4mm}.plan span{flex:1;background:#e8f6f4;border-left:3px solid #1aa38a;padding:1.6mm 2mm;font-size:8pt;font-weight:700}
+h2{font-size:10pt;color:#0b4a56;margin:2.2mm 0 1.2mm;border-bottom:1.5px solid #1aa38a;padding-bottom:.6mm}
+.cols{display:flex;gap:6mm}.cols>div{flex:1}ul{padding-left:4mm}li{margin-bottom:.9mm}
+.fig{width:100%;border-radius:2mm;display:block}.cap{font-size:7.6pt;color:#556;text-align:center;margin-top:.8mm}
+.kp{display:flex;gap:2mm;margin:2mm 0}.kp div{flex:1;background:#fff4e5;border-radius:2mm;padding:1.8mm;text-align:center}.kp b{display:block;font-size:14pt;color:#c25b00}.kp small{font-size:7.2pt}
+.prod{display:flex;gap:3mm;align-items:center}.prod img{width:42mm;border-radius:2mm}
+.qr{display:flex;gap:3mm;align-items:center;margin-top:2mm}.qr svg{width:21mm;height:21mm}.qr p{font-size:8pt}
+.foot{position:absolute;bottom:0;left:0;right:0;background:#06202f;color:#bfe9e2;font-size:7.4pt;padding:2.5mm 12mm;display:flex;justify-content:space-between}
+.refs{font-size:7pt;color:#556;margin-top:2mm}
+</style></head><body>
+<div class="top"><img src="../assets/logo-fsb.jpg"><div style="flex:1"><h1>Procédés de purification de biomolécules</h1><p>Étude d’un exemple : l’acarbose CORECT® (Biopharm), issue d’<i>Actinoplanes</i></p>
+<div class="meta">Module : TD Biotechnologie microbienne &nbsp;|&nbsp; Année universitaire 2026/2027<br>Présenté par : <b>Zekraoui Rabah Allaa Eddine</b> &nbsp;|&nbsp; Examiné par : Professeure Mme Benchiekh</div></div><img src="../assets/logo-usthb.png"></div>
+<div class="wrap">
+<div class="plan"><span>I. Introduction et problématique</span><span>II. Généralités</span><span>III. Méthodes et matériels</span><span>IV. Étude d’un exemple</span><span>V. Conclusion</span><span>VI. Références</span></div>
+<h2>Problématique</h2><p>Comment obtenir une biomolécule <b>pure, stable et active à l’échelle industrielle</b> ? Il faut séparer la molécule d’un mélange très complexe, sans la dénaturer, avec un bon rendement, un coût acceptable et un procédé reproductible et validé.</p>
+<h2>Sept familles de techniques</h2><img class="fig" src="../assets/figures/techniques.png" style="max-height:50mm;object-fit:contain;background:#fff"><div class="cap">Centrifugation, filtration, précipitation, extraction liquide-liquide, chromatographies, cristallisation et adsorption, électrophorèse. Chacune existe en plusieurs types.</div>
+<div class="cols"><div><h2>À retenir</h2><ul>
+<li><b>Étapes d’un procédé</b> : clarification, capture, purification intermédiaire, polissage, formulation. Chaque étape gagne en pureté et perd en rendement.</li>
+<li><b>Contrôle qualité</b> : HPLC, électrophorèse capillaire, spectrométrie de masse, ELISA, test LAL ; méthodes validées selon ICH Q2(R2).</li>
+<li><b>Qualité par la conception</b> : attributs critiques (CQA), paramètres critiques (CPP), espace de conception (ICH Q8 à Q10).</li>
+<li><b>Innovations</b> : chromatographie en continu, usage unique, monolithes, systèmes aqueux biphasiques.</li>
+<li><b>Autre exemple</b> : l’anticorps monoclonal (protéine A, inactivation virale, échanges d’ions, nanofiltration).</li></ul></div>
+<div><h2>Exemple : CORECT® (acarbose 50 mg)</h2><div class="prod"><img src="../assets/corect-box.jpg"><div style="font-size:8.2pt">Comprimés, boîte de 30, voie orale. Médicament de référence : GLUCOBAY® (Bayer). Inhibiteur des α-glucosidases. Produit par fermentation d’<i>Actinoplanes</i>.</div></div>
+<div class="kp"><div><b>6,6</b><small>g/L publiés</small></div><div><b>A à H</b><small>impuretés</small></div><div><b>1990</b><small>production industrielle</small></div></div>
+<p style="font-size:8.4pt">Défi : séparer l’acarbose de molécules très proches, dont le composant C. Étape clé : adsorption sur résine échangeuse de cations.</p></div></div>
+<h2>Le voyage de la molécule</h2><img class="fig" src="../assets/figures/journey.png" style="max-height:21mm;object-fit:contain;background:#0a1520">
+<div class="qr"><div id="qrbox"></div><p><b>Site interactif</b> : animations, laboratoire virtuel, défi du procédé. Scannez le code (lien provisoire à remplacer après l’hébergement sur GitHub).</p></div>
+<div class="refs">Références clés : [1] Xue et al., 2013 ; [2] Zhao et al., 2018 ; [4] US 6,649,755 ; [5] EMA, ICH Q2(R2) ; [12] notice Glucobay (Bayer) ; [27] EMA, ICH Q8(R2) ; [30] BioPharm International. Liste complète dans le compte rendu.</div>
+</div><div class="foot"><span>© 2026 Zekraoui Rabah Allaa Eddine</span><span>Faculté des Sciences Biologiques, USTHB</span></div><script src="../js/qr.js"></script><script src="../js/config.js"></script><script>document.getElementById("qrbox").innerHTML=qrSvg(SITE_URL,200)</script></body></html>

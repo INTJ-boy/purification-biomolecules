@@ -1,0 +1,10 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Générateur de code QR</title>
+<style>body{font-family:Arial,sans-serif;max-width:560px;margin:30px auto;padding:0 16px;color:#10222e}input{width:100%;padding:12px;font-size:16px;border:1px solid #9bb;border-radius:8px}button{padding:11px 18px;font-size:16px;margin:10px 8px 0 0;border:0;border-radius:8px;background:#0b4a56;color:#fff;cursor:pointer}#q svg{width:320px;height:320px;border:1px solid #ccd;margin-top:14px}</style></head>
+<body><h1>Générateur de code QR</h1><p>Collez l’adresse de votre site (par exemple celle de GitHub Pages). Le code se met à jour tout seul. Cliquez sur « Télécharger l’image » pour l’insérer ensuite dans Word, PowerPoint ou une affiche.</p>
+<input id="u" aria-label="Adresse du site"><div id="q"></div><button id="png">Télécharger l’image (PNG)</button><button id="svg">Télécharger en SVG</button>
+<script src="../js/qr.js"></script><script src="../js/config.js"></script>
+<script>const u=document.getElementById('u'),q=document.getElementById('q');u.value=SITE_URL;
+function draw(){try{q.innerHTML=qrSvg(u.value,320)}catch(e){q.textContent='Adresse trop longue ou vide.'}}u.oninput=draw;draw();
+function save(name,blob){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click()}
+document.getElementById('svg').onclick=()=>save('code-qr.svg',new Blob([qrSvg(u.value,1000)],{type:'image/svg+xml'}));
+document.getElementById('png').onclick=()=>{const img=new Image();img.onload=()=>{const c=document.createElement('canvas');c.width=c.height=1000;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,1000,1000);x.drawImage(img,0,0,1000,1000);c.toBlob(b=>save('code-qr.png',b))};img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(qrSvg(u.value,1000))}</script></body></html>
