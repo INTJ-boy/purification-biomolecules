@@ -1,8 +1,8 @@
-/* =====================================================================
-   HELIX.JS : the 3D DNA helix in the background, drawn on a plain 2D canvas (no external library, works offline).
-   It turns and slides with your scroll and follows the pointer slightly. Stops in light mode or when the tab is hidden.
-   Change the colors here: COL_A = first strand, COL_B = second strand.
-   ===================================================================== */
+                                                                        
+                                                                                                                  
+                                                                                                                        
+                                                                       
+                                                                           
 (function(){const cv=$('#gl'),x=cv.getContext('2d');if(!x)return;const COL_A='#2dd4bf',COL_B='#ff9f43';let W=0,H=0,dpr=1,mx=0,my=0;
  function size(){dpr=Math.min(devicePixelRatio||1,innerWidth<700?1.5:2);W=innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);x.setTransform(dpr,0,0,dpr,0,0)}
  size();addEventListener('resize',size);addEventListener('pointermove',e=>{mx=e.clientX/W-.5;my=e.clientY/H-.5},{passive:true});

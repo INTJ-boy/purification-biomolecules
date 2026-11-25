@@ -1,29 +1,29 @@
-/* =====================================================================
-   LABS.JS : the LABORATORY section, one interactive model per technique, drawn as realistic lab equipment
-   LAB[0] centrifugation (rotor + falcon tube) | LAB[1] filtration (cell with membrane + pressure gauge)
-   LAB[2] precipitation (beaker, stirrer, pH meter) | LAB[3] extraction (separatory funnel on a stand)
-   LAB[4] chromatography (column + chromatogram + fraction collector, animated) | LAB[5] crystallization (flask in a bath)
-   LAB[6] electrophoresis (SDS-PAGE gel, animated) | LAB[7] monolith versus beads | LAB[8] aqueous two-phase system (PEG / salt) | LAB[9] continuous chromatography (PCC)
-   Each model has: s = sliders (k = name, l = [french label, english label], a = min, b = max, st = step, v = start value)
-                   run(values, languageIndex, texts) = returns [svg drawing, explanation text, optional animation]
-   Real formulas: RCF = 1.118e-5 x radius(cm) x rpm^2 ; extraction left in water = (1/(1+K x r))^n.
-   The other models are simplified teaching models (illustrative values).
-   Drawing helpers (SGD, GLS, sh, hl, rotor) come from js/scenes.js.
-   ===================================================================== */
+                                                                        
+                                                                                                          
+                                                                                                        
+                                                                                                      
+                                                                                                                          
+                                                                                                                                                                         
+                                                                                                                          
+                                                                                                                  
+                                                                                                   
+                                                                         
+                                                                    
+                                                                           
 const LR=j=>(j*47%97)/97;
 const SPEC=[['Cellules','Cells',1e9,'#ff9f43'],['Anticorps','Antibody',150,'#ff5f8f'],['Albumine','Albumin',66,'#b18cff'],['Insuline','Insulin',5.8,'#7fe9ff'],['Acarbose','Acarbose',.645,'#2dd4bf']];
 const CUTS=[1,3,10,30,100,300,1000];
 const FS='fill="url(#sgGl)" stroke="#e8f2f8" stroke-opacity=".9" stroke-width="2.4"';
 const FUN='M94 84 C40 108 46 178 94 214 L94 226 L106 226 L106 214 C154 178 160 108 106 84 Z';
 const LAB=[
-/* 0 CENTRIFUGATION */
+                      
 {s:[{k:'rpm',l:['Vitesse (tr/min)','Speed (rpm)'],a:500,b:15000,st:100,v:4000},{k:'rad',l:['Rayon du rotor (cm)','Rotor radius (cm)'],a:3,b:15,st:.5,v:8},{k:'tm',l:['Durée (min)','Time (min)'],a:1,b:30,st:1,v:10}],
  run:(v,k,t)=>{const g=1.118e-5*v.rad*v.rpm*v.rpm,f=1-Math.exp(-g*v.tm/6000),ph=f*40,tp='M178 36 L178 150 L190 198 L202 150 L202 36 Z';let d='';
   for(let j=0;j<18;j++)d+=`<circle cx="${181+(j*7)%18}" cy="${62+(j*23)%110}" r="2.2" fill="#d9b36a" opacity="${((1-f)*.85).toFixed(2)}"/>`;
   let tube=`<clipPath id="lbt"><path d="${tp}"/></clipPath><g clip-path="url(#lbt)"><rect x="170" y="56" width="40" height="150" fill="url(#sgWa)"/><rect x="170" y="56" width="40" height="150" fill="#d8c28a" opacity="${((1-f)*.5).toFixed(2)}"/>${d}<rect x="170" y="${198-ph}" width="40" height="${ph+14}" fill="#e8d5a0"/><rect x="170" y="${198-ph}" width="40" height="3" fill="#fff" opacity=".45"/></g><path d="${tp}" ${FS}/><rect x="175" y="24" width="30" height="14" rx="3" fill="#2f7fe0"/>`;
   for(let q=0;q<5;q++)tube+=`<line x1="178" x2="${q%2?184:188}" y1="${60+q*18}" y2="${60+q*18}" stroke="#e8f2f8" stroke-width="1.4"/>`;
   return [SGD+sh(95,214,80)+rotor('l',92,110,66,Math.max(.1,900/v.rpm))+tube+hl('M182 44 L182 140'),`<b>RCF = ${Math.round(g).toLocaleString(k?'en':'fr')} x g</b><br>${t.lab_s[g<1000?0:g<20000?1:2]}<br><small>RCF = ${k?'1.118':'1,118'} × 10<sup>-5</sup> × r × rpm² [11]</small>`]}},
-/* 1 FILTRATION */
+                  
 {s:[{k:'cut',l:['Seuil de coupure','Cut-off'],a:0,b:6,st:1,v:2},{k:'p',l:['Pression (bar)','Pressure (bar)'],a:.5,b:5,st:.5,v:2}],f:{cut:x=>CUTS[x]+' kDa'},
  run:(v,k)=>{const cut=CUTS[v.cut],spd=Math.max(1.4,7/v.p),gap=3+Math.log10(cut+1)*5,ang=-120+(v.p-.5)/4.5*240;
   let s=SGD+sh(105,216,86)+`<rect x="24" y="14" width="162" height="90" rx="8" ${FS}/><rect x="26" y="42" width="158" height="60" fill="#b98b3e" opacity=".3"/><rect x="20" y="8" width="170" height="8" rx="3" fill="url(#sgMt)"/><rect x="20" y="102" width="170" height="8" rx="3" fill="url(#sgMt)"/><rect x="26" y="110" width="158" height="7" fill="#cfd8df"/>`;
@@ -36,7 +36,7 @@ const LAB=[
    for(let j=0;j<3;j++)s+=`<circle cx="${36+si*29+j*8}" r="${rr2.toFixed(1)}" fill="${sp[3]}"><animate attributeName="cy" values="${keep?'26;104;48;104;26':'28;176'}" dur="${spd}s" begin="-${(j*.7).toFixed(1)}s" repeatCount="indefinite"/></circle>`;
    out+=`<span style="color:${sp[3]}">&#9679;</span> ${sp[k]} : ${keep?(k?'retained':'retenu'):(k?'passes':'passe')}<br>`});
   return [s+hl('M30 22 L30 98'),out+(k?`Pressure ${v.p} bar: faster flux, but fouling risk ${v.p>3?'high':'low'}. Rule: pick a cut-off 3 to 5 times below the molecular weight you want to keep.`:`Pression ${v.p} bar : flux plus rapide, mais risque de colmatage ${v.p>3?'élevé':'faible'}. Règle : choisir un seuil 3 à 5 fois inférieur à la masse de la molécule à retenir.`)]}},
-/* 2 PRECIPITATION */
+                     
 {s:[{k:'sat',l:['Saturation en sulfate d’ammonium (%)','Ammonium sulfate saturation (%)'],a:0,b:90,st:1,v:30},{k:'ph',l:['pH','pH'],a:3,b:9,st:.1,v:5.5}],
  run:(v,k)=>{const sg=x=>1/(1+Math.exp(-x)),s1=60-20*Math.exp(-(((v.ph-5.5)/1.2)**2)),s2=65-15*Math.exp(-(((v.ph-8)/1.2)**2)),f1=sg((v.sat-s1)/6),f2=sg((v.sat-s2)/6),bp='M80 52 L80 170 Q80 176 87 176 L173 176 Q180 176 180 170 L180 52';
   let s=SGD+sh(125,206,92)+`<rect x="62" y="176" width="136" height="22" rx="6" fill="url(#sgPl)" stroke="#6b7783" stroke-width="1.5"/><circle cx="180" cy="187" r="5" fill="url(#sgMt)"/><circle cx="76" cy="187" r="2.6" fill="#ff3b3b"><animate attributeName="opacity" values="1;.3;1" dur="1.4s" repeatCount="indefinite"/></circle><clipPath id="lbb"><path d="${bp} Z"/></clipPath><g clip-path="url(#lbb)"><rect x="78" y="78" width="104" height="100" fill="url(#sgWa)"/><rect x="78" y="78" width="104" height="100" fill="#fff" opacity="${((f1+f2)*.12).toFixed(2)}"/>`;
@@ -49,7 +49,7 @@ const LAB=[
   const p1=(f1*100).toFixed(0),p2=(f2*100).toFixed(0);
   const vd=f1>.8&&f2<.2?(k?'Good separation: collect the pellet of the target.':'Bonne séparation : on récupère le culot de la cible.'):f1<.2?(k?'Too little salt: the target stays dissolved.':'Pas assez de sel : la cible reste dissoute.'):(k?'Mixed precipitation: adjust pH or use successive salt cuts.':'Précipitation mixte : ajuster le pH ou faire des coupes de sel successives.');
   return [s,`<b>${k?'Target':'Cible'} ${p1} %</b> | ${k?'impurity':'impureté'} ${p2} %<br>${vd}`]}},
-/* 3 EXTRACTION */
+                  
 {s:[{k:'K',l:['Coefficient de partage K','Partition coefficient K'],a:.1,b:20,st:.1,v:3},{k:'r',l:['Rapport des volumes (organique / aqueux)','Volume ratio (organic / aqueous)'],a:.2,b:2,st:.1,v:1},{k:'n',l:['Nombre d’extractions','Number of extractions'],a:1,b:4,st:1,v:1}],
  run:(v,k)=>{const rem=Math.pow(1/(1+v.K*v.r),v.n),ex=1-rem,one=1-1/(1+v.K*v.r*v.n);
   let s=SGD+sh(130,206,64)+`<rect x="76" y="198" width="124" height="6" rx="2" fill="url(#sgMt)"/><rect x="186" y="34" width="6" height="168" rx="2" fill="url(#sgMt)"/><rect x="146" y="74" width="42" height="5" rx="2" fill="url(#sgMt)"/><ellipse cx="130" cy="76" rx="14" ry="4" fill="none" stroke="url(#sgMt)" stroke-width="3"/><g transform="translate(30 -30)"><clipPath id="lf"><path d="${FUN}"/></clipPath><g clip-path="url(#lf)"><rect x="30" y="76" width="140" height="78" fill="url(#sgOr)" opacity="${(.25+.65*ex).toFixed(2)}"/><rect x="30" y="154" width="140" height="92" fill="url(#sgWa)" opacity="${(.3+.6*rem).toFixed(2)}"/><path d="M30 151 q17.5 -6 35 0 t35 0 t35 0 t35 0 t35 0" stroke="#fff" fill="none" stroke-width="2"><animateTransform attributeName="transform" type="translate" values="0 0;-35 0" dur="2s" repeatCount="indefinite"/></path>`;
@@ -58,7 +58,7 @@ const LAB=[
   s+=`</g><path d="${FUN}" ${FS}/><rect x="92" y="68" width="16" height="18" fill="#e8f2f8" fill-opacity=".8"/><rect x="95" y="56" width="10" height="14" rx="3" fill="#c0392b"/><rect x="88" y="224" width="24" height="7" rx="2" fill="#e8f2f8"/><rect x="112" y="226" width="22" height="4" rx="2" fill="#c0392b"/>${hl('M62 118 C54 142 58 168 78 194')}</g><text x="14" y="70" fill="#ff9f43" font-size="9" font-family="monospace">${k?'organic':'organique'}</text><text x="14" y="130" fill="#7fe9ff" font-size="9" font-family="monospace">${k?'aqueous':'aqueuse'}</text>`;
   const f1=x=>(x*100).toFixed(1);
   return [s,k?`<b>${f1(ex)} % in the organic phase</b> after ${v.n} extraction(s). Same total solvent used in one step: ${f1(one)} %. Several small extractions work better.<br><small>left in water = (1 / (1 + K × r))<sup>n</sup></small>`:`<b>${f1(ex)} % dans la phase organique</b> après ${v.n} extraction(s). Même volume total de solvant en une seule fois : ${f1(one)} %. Plusieurs petites extractions sont plus efficaces.<br><small>reste dans l’eau = (1 / (1 + K × r))<sup>n</sup></small>`]}},
-/* 4 CHROMATOGRAPHY (animated simulation) */
+                                            
 {rep:['Rejouer l’élution','Replay the elution'],s:[{k:'end',l:['Sel final du gradient (mM NaCl)','Final gradient salt (mM NaCl)'],a:100,b:1000,st:50,v:500},{k:'ph',l:['pH','pH'],a:5,b:9,st:.1,v:7}],
  run:(v,k)=>{const E=[180,250*(1+.3*(7-v.ph)),330],cl=['#ff5f8f','#2dd4bf','#ffd23f'],H=[.55,1,.7],tt=E.map(e=>Math.min(24,3+20*e/v.end)),sg=.55,X=t=>70+180*t/25,W=25/8,sig=(i,t)=>H[i]*Math.exp(-((t-tt[i])**2)/(2*sg*sg)),F2=FS.replace('3"','2"');
   let s=SGD+'<defs><clipPath id="cc"><rect id="ccr" x="70" y="10" width="0" height="140"/></clipPath></defs>'+sh(120,216,100);
@@ -79,7 +79,7 @@ const LAB=[
   const d=Math.min(Math.abs(tt[1]-tt[0]),Math.abs(tt[2]-tt[1])),Rs=1.18*d/1.3;
   const ver=tt[1]>=24?(k?'Target not eluted: raise the final salt.':'Cible non éluée : augmenter le sel final.'):Rs>=1.5?(k?'Baseline separation (Rs ≥ 1.5).':'Séparation de base (Rs ≥ 1,5).'):Rs>=1?(k?'Partial separation.':'Séparation partielle.'):(k?'Peaks overlap: adjust the gradient or the pH.':'Pics qui se chevauchent : ajuster le gradient ou le pH.');
   return [s,`<b>${k?'Target eluted at':'Cible éluée à'} ${tt[1].toFixed(1)} min</b> (≈ ${Math.round(E[1])} mM NaCl). Rs = ${Rs.toFixed(1)}. ${ver}<br><small>${k?'Illustrative cation exchange model: lower pH binds the target more strongly. Watch the three bands separate in the column, then fill the collector tubes.':'Modèle illustratif d’échange de cations : un pH plus bas retient mieux la cible. Observez les trois bandes se séparer dans la colonne, puis remplir les tubes du collecteur.'}</small>`,an]}},
-/* 5 CRYSTALLIZATION */
+                       
 {s:[{k:'T',l:['Température finale (°C)','Final temperature (°C)'],a:0,b:60,st:1,v:20},{k:'a',l:['Anti-solvant (%)','Anti-solvent (%)'],a:0,b:60,st:1,v:10},{k:'c',l:['Concentration (g/L)','Concentration (g/L)'],a:20,b:150,st:5,v:60}],
  run:(v,k)=>{const S=40*Math.exp(.035*(v.T-20))*Math.pow(1-v.a/100,1.5),sg=v.c/S,z=sg<1?0:sg<1.4?1:sg<2.5?2:3,n=[0,3,9,26][z],sz=[0,1.15,.7,.32][z],f='M92 192 L168 192 L148 120 L148 78 L112 78 L112 120 Z',bt='M70 118 L70 194 Q70 202 78 202 L182 202 Q190 202 190 194 L190 118',hot=v.T>40,ice=v.T<=10;
   let s=SGD+sh(130,222,84);
@@ -94,7 +94,7 @@ const LAB=[
   const zt=k?['Undersaturated: everything stays dissolved, no crystals.','Metastable zone: slow growth of large, very pure crystals. This is the target zone.','Fast nucleation: many small crystals, lower purity.','Excessive supersaturation: rapid precipitation, amorphous solid, trapped impurities.']:['Sous-saturé : tout reste dissous, aucun cristal.','Zone métastable : croissance lente de gros cristaux très purs. C’est la zone visée.','Nucléation rapide : beaucoup de petits cristaux, pureté moindre.','Sursaturation excessive : précipitation rapide, solide amorphe, impuretés piégées.'];
   return [s,`<b>σ = ${sg.toFixed(2)}</b> (${k?'solubility':'solubilité'} ${S.toFixed(1)} g/L)<br>${zt[z]}`]}},
 
-/* 6 ELECTROPHORESIS (SDS-PAGE gel in its tank, animated run) */
+                                                                
 {dur:6000,rep:['Rejouer la migration','Replay the run'],s:[{k:'gel',l:['Gel de polyacrylamide (%)','Polyacrylamide gel (%)'],a:8,b:15,st:1,v:12},{k:'V',l:['Tension (V)','Voltage (V)'],a:50,b:200,st:10,v:150},{k:'tm',l:['Durée (min)','Time (min)'],a:10,b:90,st:5,v:50}],
  run:(v,k)=>{const Rf=M=>Math.max(.02,Math.min(.98,.98-(Math.log10(M)-.9)*(.28+.03*(v.gel-8)))),F=v.V*v.tm/9000;
   const lanes=[['L',[250,150,100,75,50,37,25,15,10],[.6,.6,.6,.6,.6,.6,.6,.6,.6]],['B',[180,120,95,66,55,45,35,28,22,17],[.4,.5,.3,.8,.5,.6,.4,.5,.3,.4]],['C',[150,66,55,35],[.2,.9,.3,.2]],['I',[66,45],[.9,.15]],['P',[66],[1]]];
@@ -105,7 +105,7 @@ const LAB=[
   const an=tm=>{const p=tm/25;document.querySelectorAll('#labsvg .gb').forEach(e=>{const y=48+(+e.dataset.r)*F*p*150;if(y>194)e.setAttribute('opacity',0);else{e.setAttribute('y',y.toFixed(1));e.setAttribute('opacity',e.dataset.i)}});const d=document.getElementById('gdf');if(d){const y=Math.min(198,48+F*p*150);d.setAttribute('y1',y);d.setAttribute('y2',y)}};
   const r66=Rf(66),msg=F<.35?(k?'Run too short: bands still grouped at the top of the gel.':'Migration trop courte : bandes encore groupées en haut du gel.'):F>1.05?(k?'The dye front left the gel: the smallest proteins are lost.':'Le front de migration est sorti du gel : les plus petites protéines sont perdues.'):(k?'Good run: bands are spread over the gel.':'Bonne migration : les bandes sont bien étalées sur le gel.');
   return [s,`<b>${k?'Target 66 kDa':'Cible 66 kDa'}</b> : Rf = ${r66.toFixed(2)}. ${msg}<br><small>${k?'SDS gives all proteins a similar charge, so they separate by size: small ones run faster. A low gel % resolves large proteins, a high gel % resolves small ones. Lanes: L = size ladder, B = broth, C = after capture, I = intermediate, P = purified.':'Le SDS donne à toutes les protéines une charge semblable : elles se séparent selon la taille, les petites migrent plus vite. Un gel peu concentré sépare les grosses protéines, un gel concentré les petites. Pistes : L = échelle de tailles, B = bouillon, C = après capture, I = intermédiaire, P = purifié.'}</small>`,an]}},
-/* 7 MONOLITH VERSUS PACKED BEADS */
+                                    
 {s:[{k:'F',l:['Débit (mL/min)','Flow rate (mL/min)'],a:1,b:20,st:1,v:6},{k:'sz',l:['Taille de la molécule (nm)','Molecule size (nm)'],a:2,b:200,st:2,v:100}],
  run:(v,k)=>{const Qb=10*Math.exp(-v.sz/60)/(1+v.F*v.sz/300),Qm=8*(1-.012*v.F)/(1+v.sz/1500),Pb=.35*v.F,Pm=.08*v.F,r=Math.min(6,1.5+v.sz/40),sp=Math.max(.6,6/v.F+.3);
   let s=SGD+sh(130,206,104)+`<clipPath id="lmb"><rect x="30" y="22" width="76" height="118" rx="4"/></clipPath><rect x="28" y="18" width="80" height="126" rx="8" ${FS}/><g clip-path="url(#lmb)">`;
@@ -117,7 +117,7 @@ const LAB=[
   s+=`<text x="68" y="158" text-anchor="middle" fill="#cfe3ee" font-size="9" font-family="sans-serif">${k?'Beads':'Billes'}</text><text x="190" y="158" text-anchor="middle" fill="#cfe3ee" font-size="9" font-family="sans-serif">${k?'Monolith':'Monolithe'}</text>`;
   [[30,Qb,Pb],[152,Qm,Pm]].forEach(c=>{s+=`<text x="${c[0]}" y="172" fill="#9bb8c2" font-size="7.5" font-family="monospace">${k?'capacity':'capacité'} ${c[1].toFixed(1)}</text><rect x="${c[0]}" y="175" width="76" height="6" rx="3" fill="#ffffff14"/><rect x="${c[0]}" y="175" width="${(c[1]/10*76).toFixed(1)}" height="6" rx="3" fill="#2dd4bf"/><text x="${c[0]}" y="194" fill="#9bb8c2" font-size="7.5" font-family="monospace">${k?'pressure':'pression'} ${c[2].toFixed(1)} bar</text><rect x="${c[0]}" y="197" width="76" height="6" rx="3" fill="#ffffff14"/><rect x="${c[0]}" y="197" width="${Math.min(76,c[2]/7*76).toFixed(1)}" height="6" rx="3" fill="#ff9f43"/>`});
   return [s,`<b>${k?'Capacity':'Capacité'} : ${k?'beads':'billes'} ${Qb.toFixed(1)} | ${k?'monolith':'monolithe'} ${Qm.toFixed(1)}</b> (mg/mL)<br>${k?'Pressure':'Pression'} : ${Pb.toFixed(1)} ${k?'against':'contre'} ${Pm.toFixed(1)} bar.<br><small>${k?'In a monolith the liquid crosses the channels (convection), so capacity barely falls when flow rises and large molecules are not excluded from pores. Teaching model with illustrative values.':'Dans un monolithe le liquide traverse les canaux (convection) : la capacité baisse peu quand le débit augmente et les grosses molécules ne sont pas exclues des pores. Modèle pédagogique, valeurs illustratives.'}</small>`]}},
-/* 8 AQUEOUS TWO-PHASE SYSTEM (PEG / salt) */
+                                             
 {s:[{k:'peg',l:['PEG (% m/m)','PEG (% w/w)'],a:0,b:20,st:1,v:10},{k:'salt',l:['Sel : phosphate (% m/m)','Salt: phosphate (% w/w)'],a:0,b:20,st:1,v:10},{k:'hyd',l:['Surface hydrophobe de la protéine (1 à 5)','Protein surface hydrophobicity (1 to 5)'],a:1,b:5,st:1,v:4}],
  run:(v,k)=>{const two=v.peg>=4&&v.salt>=4&&v.peg*v.salt>=70,tll=Math.max(0,v.peg+v.salt-18),Kt=Math.exp(.15*tll*v.hyd/3),Ki=Math.exp(.15*tll/3),Yt=Kt/(1+Kt),Yi=Ki/(1+Ki),tb='M44 22 L44 160 Q44 190 70 190 Q96 190 96 160 L96 22',X=x=>126+x*5.8,Y=y=>166-y*6.8;
   let s=SGD+sh(70,206,52)+`<clipPath id="lat"><path d="${tb} Z"/></clipPath><g clip-path="url(#lat)">`;
@@ -130,7 +130,7 @@ const LAB=[
   const p=x=>(x*100).toFixed(0);
   return [s,two?`<b>${k?'Two phases formed':'Deux phases formées'}</b> : ${k?'top phase (PEG-rich)':'phase haute (riche en PEG)'} : ${k?'target':'cible'} ${p(Yt)} %, ${k?'impurities':'impuretés'} ${p(Yi)} %. ${k?'Selectivity':'Sélectivité'} K ${k?'target':'cible'} / K ${k?'impurities':'impuretés'} = ${(Kt/Ki).toFixed(1)}.<br><small>${k?'Above the curve (green point) the mixture splits into two aqueous phases. A more hydrophobic target moves to the PEG phase while impurities stay in the salt phase. Teaching model with illustrative values [15].':'Au-dessus de la courbe (point vert) le mélange se sépare en deux phases aqueuses. Une cible plus hydrophobe passe dans la phase PEG tandis que les impuretés restent dans la phase saline. Modèle pédagogique, valeurs illustratives [15].'}</small>`:`<b>${k?'No phase separation':'Pas de séparation de phases'}</b> : ${k?'the mixture stays homogeneous. Raise PEG and salt above the curve.':'le mélange reste homogène. Augmentez le PEG et le sel au-dessus de la courbe.'}`]}},
 
-/* 9 CONTINUOUS CHROMATOGRAPHY (periodic countercurrent: 1 to 4 columns) */
+                                                                           
 {s:[{k:'n',l:['Nombre de colonnes','Number of columns'],a:1,b:4,st:1,v:3},{k:'f',l:['Débit (mL/min)','Flow rate (mL/min)'],a:1,b:10,st:1,v:5}],
  run:(v,k)=>{const U=[.60,.85,.92,.95],u=U[v.n-1],gain=u/.6,buf=Math.round((1-.6/u)*100),w=34,gap=18,total=v.n*w+(v.n-1)*gap,x0=(260-total)/2,dur=Math.max(.8,6/v.f);
   let s=SGD+sh(130,206,104)+`<rect x="14" y="196" width="232" height="6" rx="2" fill="url(#sgMt)"/><rect x="10" y="22" width="240" height="7" rx="3" fill="url(#sgMt)"/><line x1="14" x2="246" y1="25.5" y2="25.5" stroke="#ff9f43" stroke-width="2" stroke-dasharray="5 5"><animate attributeName="stroke-dashoffset" from="0" to="-20" dur="${dur.toFixed(2)}s" repeatCount="indefinite"/></line>`;

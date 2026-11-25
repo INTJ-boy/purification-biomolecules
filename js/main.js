@@ -1,9 +1,9 @@
-/* =====================================================================
-   MAIN.JS : the engine. Loaded after all other files.
-   stepper()  clickable step flows with purity and yield gauges (4.2 and the Acarbose process)
-   render()   writes every text of the current language into the page (data-t, data-cards attributes) and builds the lists
-   reels()    builds the roster, the team pyramid, the flow, then calls extras(), show(), labTabs(), labUp()
-   ===================================================================== */
+                                                                        
+                                                      
+                                                                                              
+                                                                                                                          
+                                                                                                            
+                                                                           
 function stepper(id,list){const el=$(id);
   el.innerHTML=`<div class="steps">${list.map((s,i)=>`<button>${i+1}. ${s[0]}</button>`).join('')}</div><span class="out"><b>${T[L].purity}</b></span><div class="gauge"><div class="g1"></div></div><span class="out"><b>${T[L].yield}</b></span><div class="gauge"><div class="g2"></div></div><p class="out"></p>`;
   const b=el.querySelectorAll('button'),g=el.querySelectorAll('.gauge div'),o=el.querySelector('p.out');
@@ -22,11 +22,11 @@ function render(){const t=T[L];document.documentElement.lang=L;$('#lang').textCo
   $('#refs').innerHTML=REFS.map(r=>`<li>${r}</li>`).join('')}
 $('#lang').onclick=()=>{L=L=='fr'?'en':'fr';try{localStorage.setItem('lang',L)}catch(e){}render()};
 
-/* mixture dots in intro svg */
+                               
 $('#dots').innerHTML=Array.from({length:26},(_,i)=>`<circle cx="${150+(i*37)%70}" cy="${35+(i*23)%90}" r="6" fill="${['#ff9f43','#b18cff','#2dd4bf','#ff5f8f'][i%4]}"/>`).join('');
-/* splash */
+            
 setTimeout(()=>document.body.classList.add('go'),250);
-/* reveal, progress, menu highlight */
+                                      
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+e.target.id))}}),{threshold:0,rootMargin:"0px 0px -8% 0px"});
 document.querySelectorAll('.rv').forEach(s=>io.observe(s));
 addEventListener('scroll',()=>{$('#bar').style.width=scrollY/(document.body.scrollHeight-innerHeight)*100+'%'},{passive:true});

@@ -1,8 +1,8 @@
-/* =====================================================================
-   QR.JS : small QR code generator (byte mode, error correction level M, versions 1 to 10, up to 213 characters). No library, works offline.
-   qrMatrix(text) returns a square array of booleans (true = dark module). qrSvg(text, pixels) returns an SVG string.
-   The address encoded on the site comes from SITE_URL in js/config.js.
-   ===================================================================== */
+                                                                        
+                                                                                                                                            
+                                                                                                                     
+                                                                       
+                                                                           
 const QR_EC=[null,[16,10,[[1,16]]],[28,16,[[1,28]]],[44,26,[[1,44]]],[64,18,[[2,32]]],[86,24,[[2,43]]],[108,16,[[4,27]]],[124,18,[[4,31]]],[154,22,[[2,38],[2,39]]],[182,22,[[3,36],[2,37]]],[216,26,[[4,43],[1,44]]]];
 const QR_AL=[null,[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50]];
 const QR_EXP=new Array(512),QR_LOG=new Array(256);(function(){let x=1;for(let i=0;i<255;i++){QR_EXP[i]=x;QR_LOG[x]=i;x<<=1;if(x&256)x^=0x11d}for(let i=255;i<512;i++)QR_EXP[i]=QR_EXP[i-255]})();
@@ -32,7 +32,7 @@ function qrMatrix(text){const bytes=Array.from(new TextEncoder().encode(text));l
  const dbits=[];out.forEach(b=>{for(let i=7;i>=0;i--)dbits.push((b>>i)&1)});
  const place=mask=>{const G=M.map(r=>r.slice());let k=0,up=true;for(let c=size-1;c>0;c-=2){if(c==6)c--;for(let i=0;i<size;i++){const r=up?size-1-i:i;for(let j=0;j<2;j++){const cc=c-j;if(fn[r][cc])continue;let b=k<dbits.length?dbits[k]==1:false;k++;
    const m=[(r+cc)%2==0,r%2==0,cc%3==0,(r+cc)%3==0,(Math.floor(r/2)+Math.floor(cc/3))%2==0,(r*cc)%2+(r*cc)%3==0,((r*cc)%2+(r*cc)%3)%2==0,((r+cc)%2+(r*cc)%3)%2==0][mask];G[r][cc]=m?!b:b}}up=!up}return G};
- const fmt=(G,mask)=>{const f=(((0<<3)|mask)<<10|qrBch((0<<3)|mask,0x537,10))^0x5412;/* level M = 00 */
+ const fmt=(G,mask)=>{const f=(((0<<3)|mask)<<10|qrBch((0<<3)|mask,0x537,10))^0x5412;                  
   const bit=i=>!!((f>>i)&1);for(let i=0;i<6;i++){G[i][8]=bit(i);G[8][size-1-i]=bit(i)}G[7][8]=bit(6);G[8][size-8]=bit(6);G[8][8]=bit(7);G[8][7]=bit(7);G[size-7][8]=bit(8);G[8][size-7]=bit(8);for(let i=9;i<15;i++){G[8][14-i]=bit(i);G[size-15+i][8]=bit(i)}G[size-8][8]=true};
  const pen=G=>{let s=0;for(let t=0;t<2;t++)for(let i=0;i<size;i++){let run=1;for(let j=1;j<size;j++){const a=t?G[j][i]:G[i][j],b=t?G[j-1][i]:G[i][j-1];if(a==b){run++;if(run==5)s+=3;else if(run>5)s++}else run=1}}
   for(let i=0;i<size-1;i++)for(let j=0;j<size-1;j++){const a=G[i][j];if(a==G[i][j+1]&&a==G[i+1][j]&&a==G[i+1][j+1])s+=3}

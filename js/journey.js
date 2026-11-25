@@ -1,9 +1,9 @@
-/* =====================================================================
-   JOURNEY.JS : "Le voyage de la molecule" animation in the conclusion
-   48 particles travel along a pipe through 6 stations; impurities (colored) fall out at each station, a few product particles (teal) are lost.
-   JR_X = x position of the stations | JR_P / JR_Y = purity and yield displayed at each station (illustrative)
-   JR_OUT = how many impurity particles leave at stations 1 to 5. Station names: js/content.js (jr_st).
-   ===================================================================== */
+                                                                        
+                                                                      
+                                                                                                                                               
+                                                                                                              
+                                                                                                       
+                                                                           
 const JR_X=[30,90,140,190,240,290],JR_P=['10','35','70','95','99','99.5'],JR_Y=['100','95','85','75','70','68'],JR_OUT=[10,12,8,4,2];
 let jrRaf=0,jrP=0,jrParts=[];
 function journeyBuild(){const t=T[L],box=$('#jr');if(!box)return;
@@ -21,7 +21,7 @@ function jrDraw(p){const t=T[L],front=40+p*260;let st=0;JR_X.forEach((x,i)=>{if(
 function jrPlay(){cancelAnimationFrame(jrRaf);const s0=performance.now(),D=12000,f=()=>{jrP=Math.min(1,(performance.now()-s0)/D);jrDraw(jrP);if(jrP<1)jrRaf=requestAnimationFrame(f)};f()}
 let jrOnce=false;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!jrOnce){jrOnce=true;jrPlay()}}),{threshold:.5}).observe($('#jr'));
 
-/* equipment icon above each station: fermenter, centrifuge, column, column, filter, tablet */
+                                                                                              
 function jrIcon(i,x){const m='stroke="#e8f2f8" stroke-width="1.6"';
  return [`<rect x="${x-9}" y="6" width="18" height="24" rx="4" fill="url(#sgPl)" ${m}/><line x1="${x}" x2="${x}" y1="8" y2="24" stroke="#cfe3ee" stroke-width="1.6"/><rect x="${x-6}" y="22" width="12" height="2.6" fill="#cfe3ee"><animateTransform attributeName="transform" type="scale" additive="sum" values="1 1;.2 1;1 1" dur=".7s" repeatCount="indefinite"/></rect>`,
  `<g transform="translate(${x} 18)"><circle r="12" fill="url(#sgPl)" ${m}/><g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur=".5s" repeatCount="indefinite"/><line x1="-9" x2="9" y1="0" y2="0" stroke="#ff9f43" stroke-width="3" stroke-linecap="round"/><line x1="0" x2="0" y1="-9" y2="9" stroke="#2dd4bf" stroke-width="3" stroke-linecap="round"/></g></g>`,

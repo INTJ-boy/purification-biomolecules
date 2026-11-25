@@ -1,11 +1,11 @@
-/* =====================================================================
-   UI.JS : extra interface features
-   1. extras()      builds the plan, key takeaways, comparison table, key figures, next-chapter buttons
-   2. PRESENTER MODE (button "Presenter": bar with arrows, timer and speaker notes). Notes text: js/content.js (notes)
-   3. TOOLS menu (Aa button): text size, light mode, print/PDF, share link, copy references
-   4. EASTER EGG: touch the squid in the footer
-   5. cursor glow and 3D tilt of the cards
-   ===================================================================== */
+                                                                        
+                                   
+                                                                                                       
+                                                                                                                      
+                                                                                           
+                                               
+                                          
+                                                                           
 const fmt=(v,d)=>{const s=(+v).toFixed(d);return L=='fr'?s.replace('.',','):s};
 function extras(){const t=T[L];
  $('#segs').innerHTML='<i></i>'.repeat(7);
@@ -17,7 +17,7 @@ function extras(){const t=T[L];
  ids.forEach((id,i)=>{const s=$('#'+id);let a=s.querySelector('.nx');if(!a){a=document.createElement('a');a.className='nx';s.appendChild(a)}a.href='#'+nx[i];a.innerHTML=t.next+' &#9654;'})}
 let kdone=false;new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!kdone){kdone=true;if(window.LITE)return;const s0=performance.now(),f=()=>{const p=Math.min(1,(performance.now()-s0)/1200);document.querySelectorAll('#kpis b').forEach(b=>b.textContent=fmt(b.dataset.v*p,b.dataset.d));if(p<1)requestAnimationFrame(f)};f()}}),{threshold:.4}).observe($('#kpis'));
 
-/* presenter mode with visible bar */
+                                     
 const PS=['hero','plan','intro','gen','met','ex','con','ref'];function pnote(){const k=pidx();$('#pnt').innerHTML='<b>'+(k+1)+'/'+PS.length+'</b> '+T[L].notes[k];tmTick()}let pOn=false,pt0=0,ptm;
 function pidx(){let k=0;PS.forEach((id,i)=>{if($('#'+id).offsetTop<=scrollY+innerHeight*.4)k=i});return k}
 function pgo(d){const k=Math.max(0,Math.min(PS.length-1,pidx()+d));$('#'+PS[k]).scrollIntoView({behavior:'smooth'})}
@@ -32,7 +32,7 @@ document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement
 addEventListener('keydown',e=>{if(e.key=='Escape'){$('#tp').classList.remove('open');if(pOn)pset(false);return}
  if(!pOn||e.target.closest('#edit,input'))return;if(e.key==' '&&e.target.tagName=='BUTTON')return;
  const nx=['ArrowDown','ArrowRight','PageDown',' '].includes(e.key),pv=['ArrowUp','ArrowLeft','PageUp'].includes(e.key);if(!nx&&!pv)return;e.preventDefault();pgo(nx?1:-1)});
-/* tools: text size, light mode, print, share, copy references */
+                                                                 
 let FSZ=100;try{FSZ=+localStorage.getItem('fs')||100}catch(e){}
 function setFs(n){FSZ=Math.max(85,Math.min(140,n));document.documentElement.style.fontSize=FSZ+'%';try{localStorage.setItem('fs',FSZ)}catch(e){}}setFs(FSZ);
 let LITE=false;try{const s=localStorage.getItem('lite');LITE=s===null?(navigator.hardwareConcurrency<=2||(navigator.deviceMemory&&navigator.deviceMemory<=2)||matchMedia('(prefers-reduced-motion:reduce)').matches):s==='1'}catch(e){}
@@ -43,7 +43,7 @@ $('#tsh').onclick=function(){const d={title:document.title,url:location.href};if
 $('#trf').onclick=function(){const txt=REFS.map((r,i)=>'['+(i+1)+'] '+r.replace(/<[^>]+>/g,'')).join('\n');if(navigator.clipboard)navigator.clipboard.writeText(txt).then(()=>flash(this,T[L].tl_ok)).catch(()=>{})};
 addEventListener('beforeprint',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
 
-/* ===== EASTER EGG: touch the squid in the footer ===== */
+                                                           
 let sqn=0;
 function bloop(){try{const C=new(window.AudioContext||window.webkitAudioContext)(),o=C.createOscillator(),g=C.createGain(),n=C.currentTime;o.type='sine';o.frequency.setValueAtTime(220,n);o.frequency.exponentialRampToValueAtTime(880,n+.18);g.gain.setValueAtTime(.18,n);g.gain.exponentialRampToValueAtTime(.001,n+.3);o.connect(g);g.connect(C.destination);o.start();o.stop(n+.32);setTimeout(()=>C.close(),700)}catch(e){}}
 function squid(e){document.querySelectorAll('.egg').forEach(x=>x.remove());sqn++;const big=sqn%5==0,t=T[L],o=document.createElement('div');o.className='egg';
@@ -55,56 +55,56 @@ function squid(e){document.querySelectorAll('.egg').forEach(x=>x.remove());sqn++
  s+=`<p class="egt">\u{1F991} ${big?t.egg[2]:sqn==1?t.egg[0]:t.egg[1]}<small>Zekraoui Rabah Allaa Eddine</small></p>`;
  o.innerHTML=s;document.body.appendChild(o);bloop();setTimeout(()=>o.remove(),big?4600:3400)}
 $('#sq').onclick=squid;
-/* cursor glow and 3D tilt */
+                             
 addEventListener('pointermove',e=>{const c=$('#cur');c.style.left=e.clientX+'px';c.style.top=e.clientY+'px'});
 if(matchMedia('(hover:hover)').matches){let last;document.addEventListener('pointermove',e=>{const c=e.target.closest&&e.target.closest('.card,.gl');if(last&&last!==c)last.style.transform='';if(c){const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');c.style.transform=`perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg)`}last=c})}
 
-/* ===== HELP WINDOW (button ? in the tools menu, or the ? key) ===== */
+                                                                        
 function helpClose(){const m=$('#helpm');if(m)m.hidden=true}
 function helpOpen(){let m=$('#helpm');if(!m){m=document.createElement('div');m.id='helpm';m.setAttribute('role','dialog');m.setAttribute('aria-modal','true');document.body.appendChild(m);m.onclick=e=>{if(e.target===m||e.target.closest('button'))helpClose()}}
  const t=T[L];m.innerHTML=`<div class="hbox"><h3>${t.help_t}</h3><ul>${t.help.map(x=>`<li>${x}</li>`).join('')}</ul><button class="btn" id="hx">OK</button></div>`;m.hidden=false;$('#hx').focus()}
 $('#thp').onclick=()=>{$('#tp').classList.remove('open');helpOpen()};
 addEventListener('keydown',e=>{if(e.key=='?'&&!e.target.closest('input,textarea'))helpOpen();if(e.key=='Escape')helpClose()});
 
-/* ===== SIDE DOTS : quick jump between chapters (wide screens) ===== */
+                                                                        
 function sdots(){const t=T[L];$('#sdots').innerHTML=PS.map((id,i)=>`<a href="#${id}" aria-label="${i==0?t.title:i==1?t.plan_t:t.nav[i-2]}" title="${i==0?t.title:i==1?t.plan_t:t.nav[i-2]}"></a>`).join('')}
 let maxSeen=0;addEventListener('scroll',()=>{const k=pidx();maxSeen=Math.max(maxSeen,k);document.querySelectorAll('#sdots a').forEach((a,j)=>{a.classList.toggle('on',j==k);a.classList.toggle('seen',j<=maxSeen&&j!=k)})},{passive:true});
 
-/* ===== GLOSSARY SEARCH ===== */
+                                 
 function lexq(){const f=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(),q=f($('#lexq').value||'');document.querySelectorAll('#lex details').forEach(d=>{d.hidden=!!q&&!f(d.textContent).includes(q)})}
 $('#lexq').oninput=lexq;
 
-/* ===== FULLSCREEN OF THE METHODS EDIT (for the jury room screen) ===== */
+                                                                           
 function efsSync(){const b=$('#efsnd');if(b){b.classList.toggle('on',fon);b.innerHTML=fon?'&#128266;':'&#128263;'}}
 function efsSet(on){const e=$('#estage');e.classList.toggle('fs',on);document.documentElement.classList.toggle('efs',on);$('#efs').innerHTML=on?T[L].efx:T[L].efs;efsSync();
  if(on){if(!matchMedia('(pointer:coarse)').matches){try{const p=e.requestFullscreen&&e.requestFullscreen();p&&p.catch&&p.catch(()=>{})}catch(x){}}}else{try{document.fullscreenElement&&document.exitFullscreen()}catch(x){}}}
-/* works everywhere: if the browser blocks true fullscreen (for example inside a preview frame) the stage still fills the whole screen */
+                                                                                                                                         
 $('#efs').onclick=()=>efsSet(!$('#estage').classList.contains('fs'));$('#efc').onclick=()=>efsSet(false);$('#efsnd').onclick=()=>funk(!fon);
 document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&$('#estage').classList.contains('fs'))efsSet(false)});
 addEventListener('keydown',e=>{if(e.key=='Escape'&&$('#estage').classList.contains('fs'))efsSet(false)});
 
-/* ===== LASER POINTER (red button in the presenter bar) ===== */
+                                                                 
 const LZ=document.createElement('div');LZ.id='laser';document.body.appendChild(LZ);
 function laser(on){document.documentElement.classList.toggle('laser',on);const b=$('#pl');if(b)b.classList.toggle('on',on)}
 $('#pl').onclick=()=>laser(!document.documentElement.classList.contains('laser'));
 addEventListener('pointermove',e=>{if(document.documentElement.classList.contains('laser')){LZ.style.left=e.clientX+'px';LZ.style.top=e.clientY+'px'}},{passive:true});
 
-/* ===== ACCESSIBILITY: high contrast and dyslexia-friendly font (remembered) ===== */
+                                                                                      
 function flag(name,cls,btn){const on=(()=>{try{return localStorage.getItem(name)==='1'}catch(e){return false}})();
  const set=b=>{document.documentElement.classList.toggle(cls,b);$(btn).classList.toggle('on',b);try{localStorage.setItem(name,b?'1':'0')}catch(e){}};set(on);$(btn).onclick=()=>set(!document.documentElement.classList.contains(cls))}
 flag('hc','hc','#thc');flag('dys','dys','#tdy');
 
-/* ===== TITLES: words fly in when a chapter appears ===== */
+                                                             
 function splitTitles(){document.querySelectorAll('section.sc h2').forEach(h=>{if(h.querySelector('.w'))return;h.innerHTML=h.textContent.split(' ').map((x,i)=>`<span class="w" style="--i:${i}">${x}</span>`).join(' ')})}
 
-/* ===== RESUME where the visitor stopped (remembered on this device) ===== */
+                                                                              
 let rsT=0;addEventListener('scroll',()=>{clearTimeout(rsT);rsT=setTimeout(()=>{try{localStorage.setItem('lastsec',PS[pidx()])}catch(e){}},400)},{passive:true});
 (function(){let last=null;try{last=localStorage.getItem('lastsec')}catch(e){}
  if(!last||last=='hero'||last=='plan'||!$('#'+last))return;
  setTimeout(()=>{if(scrollY>300)return;const t=T[L],d=document.createElement('div');d.id='resume';d.innerHTML=`<span>${t.rs_t}</span><button class="mini" id="rsy">${t.rs_y}</button><button class="mini" id="rsn">${t.rs_n}</button>`;document.body.appendChild(d);
   $('#rsy').onclick=()=>{$('#'+last).scrollIntoView({behavior:'smooth'});d.remove()};$('#rsn').onclick=()=>d.remove();setTimeout(()=>d.remove(),9000)},1200)})();
 
-/* ===== SEARCH PALETTE (Ctrl+K, the / key, or the Search button in the tools menu) ===== */
+                                                                                            
 function cmdItems(){const t=T[L],k=t.cmd_k,a=[],go=(el,o)=>el.scrollIntoView(o||{behavior:'smooth'});
  t.nav.forEach((n,i)=>a.push({n,k:k[0],f:()=>go($('#'+['intro','gen','met','ex','con','ref'][i]))}));
  t.m.forEach((m,i)=>a.push({n:m[0],k:k[1],f:()=>{show(i);go($('#edit'),{behavior:'smooth',block:'center'})}}));
@@ -127,7 +127,7 @@ function cmdOpen(){let m=$('#cmdk');if(!m){m=document.createElement('div');m.id=
 $('#tsr').onclick=()=>{$('#tp').classList.remove('open');cmdOpen()};
 addEventListener('keydown',e=>{if((e.key=='k'||e.key=='K')&&(e.ctrlKey||e.metaKey)){e.preventDefault();cmdOpen()}else if(e.key=='/'&&!e.target.closest('input,textarea')){e.preventDefault();cmdOpen()}else if(e.key=='Escape')cmdClose()});
 
-/* ===== PRESENTATION TIMER (button in the presenter bar): total time shared between the chapters ===== */
+                                                                                                          
 const TM_OPT=[10,15,20,25,30],TM_FR=[.05,.05,.10,.15,.35,.20,.05,.05];let TM_TOT=15,tmChapT=0,tmLast=-1;
 try{TM_TOT=+localStorage.getItem('tmtot')||15}catch(e){}
 function tmFmt(s){s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}

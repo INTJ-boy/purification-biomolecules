@@ -1,6 +1,6 @@
 const PB_STARTS=[[100,400,300,80,60],[100,350,350,100,30],[100,300,300,60,12]],PB_COL=['#2dd4bf','#a97f3a','#b18cff','#ff5f8f','#ffd23f'],PB_BUDGET=90;
 const PB_OPCOL=['#00bcd4','#ff7043','#8bc34a','#e11d96'];
-/* order of PB_OPS: 0 centrifugation, 1 filtration, 2 precipitation, 3 extraction, 4 chromatography, 5 crystallization, 6 ATPS, 7 monolith, 8 continuous chromatography, 9 preparative electrophoresis */
+                                                                                                                                                                                                         
 const PB_OPS=[{r:[.95,.05,0,.05],y:.97,c:6},{r:[.98,.30,0,.10],y:.94,c:8},{r:[.20,.60,.10,.30],y:.88,c:4},{r:[0,.30,.10,.50],y:.85,c:7},{r:[0,.995,.95,.85],y:.86,c:30},{r:[.10,.70,.90,.98],y:.82,c:10},
  {r:[.55,.80,.45,.55],y:.90,c:8},{r:[0,.995,.93,.80],y:.90,c:24},{r:[0,.998,.96,.88],y:.92,c:22},{r:[0,.90,.95,.60],y:.45,c:35}];
 const PB_MOD=[

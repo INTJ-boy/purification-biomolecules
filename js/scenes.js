@@ -1,10 +1,10 @@
-/* =====================================================================
-   SCENES.JS : the animated drawings (SVG) of the 6 techniques shown in the methods edit
-   scene(i): i = 0 centrifugation, 1 filtration, 2 precipitation, 3 extraction, 4 chromatography, 5 crystallization, 6 electrophoresis
-   Every scene is a small lab setup drawn with gradients, glass reflections, shadows and looping animations (SMIL).
-   Shared look: SGD (gradients), GLS (glass style), sh() (soft shadow), hl() (glass reflection).
-   rotor(): the realistic centrifuge rotor used by scene 0 and by the laboratory.
-   ===================================================================== */
+                                                                        
+                                                                                        
+                                                                                                                                      
+                                                                                                                   
+                                                                                                
+                                                                                 
+                                                                           
 const SGD=`<defs>
 <linearGradient id="sgGl" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset=".18" stop-color="#fff" stop-opacity=".07"/><stop offset=".62" stop-color="#fff" stop-opacity=".03"/><stop offset=".9" stop-color="#fff" stop-opacity=".2"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient>
 <linearGradient id="sgMt" x1="0" x2="1"><stop offset="0" stop-color="#5d6a76"/><stop offset=".35" stop-color="#e6ecf1"/><stop offset=".7" stop-color="#9aa6b1"/><stop offset="1" stop-color="#4c5863"/></linearGradient>
@@ -23,12 +23,12 @@ const hl=d=>`<path d="${d}" stroke="#fff" stroke-opacity=".5" stroke-width="3" s
 const rr=j=>(j*47%97)/97;
 const prism=(c,k)=>`<g transform="translate(${c[0]} ${c[1]})"><g><animateTransform attributeName="transform" type="scale" values=".1;1.15;1.15" keyTimes="0;.5;1" dur="6s" begin="${c[2]}s" repeatCount="indefinite"/><polygon points="0,-14 10,-8 0,-2 -10,-8" fill="#fff"/><polygon points="-10,-8 0,-2 0,12 -10,6" fill="#dbeafe"/><polygon points="10,-8 0,-2 0,12 10,6" fill="#93c5fd"/></g></g>`;
 
-/* 0 CENTRIFUGE: top view of the rotor spinning, with its control panel counting up */
+                                                                                      
 function scene0(){
  const nums=['0','900','2400','4000'].map((v,k)=>`<text x="100" y="228" text-anchor="middle" fill="#7dffb2" font-size="11" font-family="monospace"><animate attributeName="opacity" calcMode="discrete" values="${[0,1,2,3].map(q=>q==k?1:0).join(';')}" dur="8s" repeatCount="indefinite"/>${v} rpm</text>`).join('');
  return SGD+rotor('e',100,124,62,.2)+hl('M48 96 A56 56 0 0 1 96 66')+`<rect x="48" y="208" width="104" height="34" rx="6" fill="url(#sgPl)" stroke="url(#sgMt)" stroke-width="2"/>${nums}<text x="100" y="239" text-anchor="middle" fill="#7dffb2" font-size="8" font-family="monospace">1431 x g | 10:00</text><circle cx="60" cy="216" r="2.4" fill="#35ff7a"><animate attributeName="opacity" values="1;.2;1" dur="1.2s" repeatCount="indefinite"/></circle>`}
 
-/* 1 FILTRATION: Buchner funnel on a side-arm flask under vacuum, cake building on the filter paper */
+                                                                                                      
 function scene1(){
  const fl='M64 238 L136 238 L116 172 L116 154 L84 154 L84 172 Z';let s=SGD+sh(100,241,54);
  s+=`<clipPath id="sgfl"><path d="${fl}"/></clipPath><g clip-path="url(#sgfl)"><rect x="60" width="80" height="80" fill="url(#sgWa)"><animate attributeName="y" values="236;206;206" dur="7s" repeatCount="indefinite"/></rect></g><path d="${fl}" ${GLS}/>`;
@@ -39,7 +39,7 @@ function scene1(){
  for(let j=0;j<3;j++)s+=`<circle cx="100" r="3" fill="#bff3ff"><animate attributeName="cy" from="170" to="214" dur="1.1s" begin="-${j*.37}s" repeatCount="indefinite"/></circle>`;
  return s+hl('M62 80 L62 112')+hl('M70 236 L84 190')}
 
-/* 2 PRECIPITATION: beaker on a magnetic stirrer, reagent added by a dropper, flakes forming then settling */
+                                                                                                             
 function scene2(){
  let s=SGD+sh(100,246,70);
  s+=`<rect x="42" y="228" width="116" height="16" rx="5" fill="url(#sgPl)" stroke="#6b7783" stroke-width="1.5"/><circle cx="142" cy="236" r="4" fill="url(#sgMt)"/><circle cx="58" cy="236" r="2.4" fill="#ff3b3b"><animate attributeName="opacity" values="1;.3;1" dur="1.4s" repeatCount="indefinite"/></circle>`;
@@ -52,7 +52,7 @@ function scene2(){
  s+=`<rect x="96" y="52" width="8" height="44" rx="3" ${GLS}/><path d="M92 55 C92 36 108 36 108 55 Z" fill="#c0392b"/><path d="M98 96 L102 96 L100 106 Z" fill="#e8f2f8"/><circle cx="100" r="3.2" fill="#efe4ff"><animate attributeName="cy" values="107;128;128" keyTimes="0;.15;1" dur="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;1;0" keyTimes="0;.15;1" dur="1.6s" repeatCount="indefinite"/></circle>`;
  return s+hl('M68 110 L68 214')}
 
-/* 3 EXTRACTION: separatory funnel on a ring stand. It is shaken (emulsion), then the two phases separate */
+                                                                                                            
 function scene3(){
  const b='M94 84 C40 108 46 178 94 214 L94 226 L106 226 L106 214 C154 178 160 108 106 84 Z',ph=(a,bb)=>`<animate attributeName="opacity" values="${a}" keyTimes="0;.2;.55;1" dur="9s" repeatCount="indefinite"/>`;
  let s=SGD+sh(100,243,62);
@@ -63,7 +63,7 @@ function scene3(){
  s+=`</g><path d="${b}" ${GLS}/><rect x="92" y="68" width="16" height="18" fill="#e8f2f8" fill-opacity=".8"/><rect x="95" y="56" width="10" height="14" rx="3" fill="#c0392b"/><rect x="88" y="224" width="24" height="7" rx="2" fill="#e8f2f8"/><rect x="112" y="226" width="22" height="4" rx="2" fill="#c0392b"/>${hl('M62 118 C54 142 58 168 78 194')}</g>`;
  return s}
 
-/* 4 CHROMATOGRAPHY: column on a stand with a pump, three colored bands separating, fraction collector rack moving under the outlet */
+                                                                                                                                      
 function scene4(){
  let s=SGD+sh(100,243,72);
  s+=`<rect x="26" y="238" width="148" height="6" rx="2" fill="url(#sgMt)"/><rect x="32" y="62" width="6" height="178" rx="2" fill="url(#sgMt)"/><rect x="36" y="118" width="48" height="5" rx="2" fill="url(#sgMt)"/><rect x="78" y="110" width="12" height="18" rx="3" fill="#39434d"/>`;
@@ -77,7 +77,7 @@ function scene4(){
  ['#7fe9ff','#ff5f8f','#2dd4bf','#ffd23f','#7fe9ff'].forEach((c,j)=>s+=`<rect x="${97+26*j}" y="212" width="14" height="28" rx="6" ${GLS}/><rect x="${98.5+26*j}" width="11" rx="5" fill="${c}" opacity=".9"><animate attributeName="height" values="0;0;16;16" keyTimes="0;${j/5};${(j+1)/5};1" dur="7s" repeatCount="indefinite"/><animate attributeName="y" values="238;238;222;222" keyTimes="0;${j/5};${(j+1)/5};1" dur="7s" repeatCount="indefinite"/></rect>`);
  return s+'</g>'}
 
-/* 5 CRYSTALLIZATION: flask cooling in an ice bath, thermometer falling, crystals growing and sparkling */
+                                                                                                          
 function scene5(){
  const f='M72 232 L128 232 L113 160 L113 110 L87 110 L87 160 Z';let s=SGD+sh(100,245,68);
  s+=`<clipPath id="sgcf"><path d="${f}"/></clipPath><g clip-path="url(#sgcf)"><rect x="60" y="150" width="80" height="90" fill="url(#sgOr)" opacity=".45"/></g><path d="${f}" ${GLS}/>`;
@@ -96,7 +96,7 @@ function rotor(id,cx,cy,R,dur){let w='';for(let a=0;a<360;a+=45)w+=`<g transform
  const rot=`<g transform="translate(${cx} ${cy})"><g><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="${dur}s" repeatCount="indefinite"/><circle r="${R}" fill="url(#rg${id})"/>${w}<circle r="9" fill="#d8dee4"/><circle r="3.2" fill="#333"/></g></g>`;
  return `<defs><radialGradient id="mg${id}"><stop offset="0" stop-color="#2b3640"/><stop offset="1" stop-color="#11171c"/></radialGradient><radialGradient id="rg${id}"><stop offset="0" stop-color="#d4dbe2"/><stop offset=".7" stop-color="#8d99a4"/><stop offset="1" stop-color="#5d6a76"/></radialGradient></defs><circle cx="${cx}" cy="${cy}" r="${R+12}" fill="url(#mg${id})" stroke="#b9c3cc" stroke-width="3"/>${rot}<g opacity=".25" transform="rotate(7 ${cx} ${cy})">${rot}</g>`}
 
-/* 6 ELECTROPHORESIS: vertical gel tank with buffer, a gel whose lanes run down, electrode bubbles and a power supply */
+                                                                                                                        
 function scene6(){
  let s=SGD+sh(100,246,76);
  s+=`<rect x="108" y="56" width="74" height="30" rx="5" fill="url(#sgPl)" stroke="url(#sgMt)" stroke-width="2"/><rect x="114" y="62" width="36" height="14" rx="2" fill="#07210f"/><text x="132" y="73" text-anchor="middle" fill="#7dffb2" font-size="9" font-family="monospace">150 V</text><circle cx="124" cy="86" r="3.4" fill="#ff3b3b"/><circle cx="164" cy="86" r="3.4" fill="#222" stroke="#9aa6b1"/><circle cx="172" cy="68" r="3" fill="#35ff7a"><animate attributeName="opacity" values="1;.3;1" dur="1.2s" repeatCount="indefinite"/></circle>`;
@@ -110,5 +110,5 @@ function scene6(){
  s+=`<line x1="54" x2="146" stroke="#2f7fe0" stroke-width="2"><animate attributeName="y1" values="108;206;206" keyTimes="0;.8;1" dur="9s" repeatCount="indefinite"/><animate attributeName="y2" values="108;206;206" keyTimes="0;.8;1" dur="9s" repeatCount="indefinite"/></line>`;
  return s+hl('M32 104 L32 224')}
 
-/* global gradient definitions, placed first in the page so every drawing can use them even when another drawing is hidden */
+                                                                                                                             
 document.body.insertAdjacentHTML('afterbegin','<svg id="gdefs" width="0" height="0" style="position:absolute;pointer-events:none" aria-hidden="true">'+SGD+'</svg>');
