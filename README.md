@@ -55,13 +55,10 @@ biomolecule purification.
     devices.
 -   Local persistence for selected interface preferences where browser
     storage is available.
--   Designed to run locally from the project folder and to be hosted as
-    a static website on GitHub Pages.
--   No build step or third-party JavaScript package installation is
-    required.
 
-Some optional external destinations, such as YouTube search links,
-require an internet connection. Browser storage and fullscreen behavior
+  optional external destinations, such as YouTube search links,
+require an internet connection. 
+ Browser storage and fullscreen behavior
 depend on the browser and its permissions.
 
 
